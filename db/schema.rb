@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_17_074607) do
+
+ActiveRecord::Schema.define(version: 2022_10_17_075152) do
+
+  create_table "genres", force: :cascade do |t|
+    t.string "genre_name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "order_products", force: :cascade do |t|
     t.integer "order_id", null: false
@@ -21,6 +28,17 @@ ActiveRecord::Schema.define(version: 2022_10_17_074607) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
+
+
+  create_table "products", force: :cascade do |t|
+    t.integer "genre_id", null: false
+    t.string "product_name", null: false
+    t.text "product_description", null: false
+    t.integer "tax_excluded_price", null: false
+    t.boolean "sales_status", default: true, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+   end
 
   create_table "orders", force: :cascade do |t|
     t.integer "customer_id", null: false
