@@ -42,6 +42,8 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       t.boolean :customer_status , null: false , default: true
       t.datetime :created_at , null: false , precision: 6
       t.datetime :updated_at , null: false , precision: 6
+      
+      t.timestamps null: false
     end
 
     add_index :customers, :email,                unique: true

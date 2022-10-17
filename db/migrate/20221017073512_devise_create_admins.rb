@@ -34,6 +34,8 @@ class DeviseCreateAdmins < ActiveRecord::Migration[6.1]
 
       t.datetime :created_at , null: false , precision: 6
       t.datetime :updated_at , null: false , precision: 6
+
+      t.timestamps null: false
     end
 
     add_index :admins, :email,                unique: true
