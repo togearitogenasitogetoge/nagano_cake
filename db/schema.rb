@@ -17,15 +17,15 @@ ActiveRecord::Schema.define(version: 2022_10_17_074607) do
     t.integer "product_id", null: false
     t.integer "quantity", null: false
     t.integer "tax_included_price", null: false
-    t.integer "work_status", null: false
+    t.integer "work_status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "orders", force: :cascade do |t|
     t.integer "customer_id", null: false
-    t.integer "payment_method", null: false
-    t.integer "order_status", null: false
+    t.integer "payment_method", default: 0, null: false
+    t.integer "order_status", default: 0, null: false
     t.integer "shipping_fee", null: false
     t.integer "request_amount", null: false
     t.string "name", null: false
