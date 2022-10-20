@@ -11,5 +11,17 @@ Rails.application.routes.draw do
     registrations:"public/registrations",
     sessions:'public/sessions'
   }
+
+  scope module: :public do
+    resources :orders, only:[:new, :create, :index, :show] do
+      collection do
+        post :confirm
+        get :complete
+      end
+    end
+  end
+  scope module: :admin do
+    get "admins" => "homes#top"
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
