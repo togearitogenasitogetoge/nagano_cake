@@ -1,4 +1,5 @@
 class Public::CustomersController < ApplicationController
+  before_action :reject_inactive_customer
 
   def show
     @customer=current_customer
@@ -17,14 +18,23 @@ class Public::CustomersController < ApplicationController
   end
 
   def unsubscribe
-    @customer = Customer.find_by(email: params[:email])
+    @customer = current_customer
   end
 
   def withdrawal
-    @customer = Customer.find_by(email: params[:email])
-    @user.update(is_valid: false)
+    @customer = current_customer
+    @customer.update(customer_status: false)
     reset_session
-    redirect_to root_path
+    redirect_to new_customer_session_path
+  end
+
+  def reject_inactive_customer
+    @customer = current_customer
+    if @customer
+      if @customer && !@customer.customer_status
+        redirect_to new_customer_session_path
+      end
+    end
   end
 
   private
