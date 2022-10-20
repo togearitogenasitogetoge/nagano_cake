@@ -1,0 +1,24 @@
+<div class="container">
+  <h1 class="p-2 mb-3 bg-secondary text-white col-3">会員一覧</h1>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>会員ID</th>
+        <th>氏名</th>
+        <th>メールアドレス</th>
+        <th>ステータス</th>
+      </tr>
+    </thead>
+      <tbody>
+        <% @customers.each do |customer| %>
+        <tr>
+          <td><%= customer.id %></td>
+			    <td><%= link_to customer.full_name, customer_path(customer.id) %></td>
+		    	<!--<td>会員ステータスできたら挿入</td>-->
+		    	<!--ページネーションkaminariをインストールしてよいか確認-->
+		    </tr>
+        <% end %>
+      </tbody>
+  </table>
+</div>

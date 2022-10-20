@@ -1,0 +1,43 @@
+<h3 class="p-2 mb-3 bg-secondary text-white col-3"><%= customer.full_name %></h3>
+
+<table>
+      <tbody>
+        <tr>
+          <th>会員ID</th>
+          <td><%= @customer.id %></td>
+        </tr>
+        <tr>
+          <th>氏名</th>
+			    <td><%= @customer.fullname %></td>
+        </tr>
+        <tr>
+          <th>フリガナ</th>
+          <td><%= @customer.kana_full_name %></td>
+		    </tr>
+		    <tr>
+		      <th>郵便番号</th>
+		      <td><%= @customer.postal_code %></td>
+		    </tr>
+		    <tr>
+		      <th>住所</th>
+		      <td><%= @customer.address %>
+		    </tr>
+		    <tr>
+		      <th>電話番号</th>
+		      <td><%= customer.phone_number %></td>
+		    </tr>
+		    <tr>
+		      <th>メールアドレス</th>
+		      <td><%= @customer.email %></td>
+		    </tr>
+		    <tr>
+		      <th>会員ステータス</th>
+		      <!--<td>会員ステータス入力</td>-->
+		    </tr>
+		    <tr>
+		      <th></th>
+		      <td><%= link_to  "編集する", edit_customer_path(@customer.id), class:"btn btn-sm btn-success" %></td>
+		      <!--<td>< link_to  "注文一覧を見る", class:"btn btn-sm btn-primary" %><td>注文商品が完成したらこれを追加する-->
+        <% end %>
+      </tbody>
+  </table>
