@@ -7,25 +7,51 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
-        
+
         <% if customer_signed_in? %>
           <li>
-            <%= link_to customer_path(current_customer),class: 'nav-link text-light' do %>
+            <%= link_to customers_my_page_path(current_customer),class: 'nav-link text-light' do %>
               <span>マイページボタン</span>
             <% end %>
           </li>
           <li>
-            <%=  link_to products_path,class: 'nav-link text-light' do %>
+            <%=  link_to deliveries_path,class: 'nav-link text-light' do %>
               <span>商品一覧ボタン</span>
             <% end %>
           </li>
           <li>
-            <%=  link_to cart_products_path ,class: 'nav-link text-light' do %>
+            <%=  link_to orders_path ,class: 'nav-link text-light' do %>
               <span>カートボタン</span>
             <% end %>
           </li>
           <li>
             <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-light' do %>
+              <span>ログアウトボタン</span>
+            <% end %>
+          </li>
+        <% elsif admin_signed_in? %>
+          <li>
+            <%=  link_to admin_products_path,class: 'nav-link text-light' do %>
+              <span>商品一覧ボタン</span>
+            <% end %>
+          </li>
+          <li>
+            <%=  link_to admin_customers_path ,class: 'nav-link text-light' do %>
+              <span>会員一覧ボタン</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admins_path, class: 'nav-link text-light' do %>
+              <span>注文履歴一覧ボタン</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admin_genres_path, class: 'nav-link text-light' do %>
+              <span>ジャンル一覧ボタン</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-light' do %>
               <span>ログアウトボタン</span>
             <% end %>
           </li>
@@ -36,7 +62,7 @@
             <% end %>
           </li>
           <li>
-            <%= link_to puroducts_path,class: 'nav-link text-light' do %>
+            <%= link_to deliveries_path,class: 'nav-link text-light' do %>
               <span>商品一覧ボタン</span>
             <% end %>
           </li>

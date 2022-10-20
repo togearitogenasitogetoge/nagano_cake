@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+
   #管理者用
   #URL/admin/sign_in...
   devise_for :admins,skip:[:registrations,:passwords],controllers:{
@@ -14,6 +15,12 @@ Rails.application.routes.draw do
     sessions:'public/sessions'
   }
 
+ scope module: :public do
+    root to: "homes#top"
+    get 'home/about' => "homes#about", as: "about"
+  end
+
+
   scope module: :public do
     resources :orders, only:[:new, :create, :index, :show] do
       collection do
@@ -22,21 +29,17 @@ Rails.application.routes.draw do
       end
     end
   end
+
   scope module: :admin do
     get "admins" => "homes#top"
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  
-  
+
+
   namespace :admin do
     resources :products, only: [:new, :create, :index, :show, :edit, :update]
     resources :genres, only: [:create, :index, :edit, :update]
-    
-    
-    
   end
-  
-end
 
   #public/customersコントローラー
   scope module: :public do
@@ -48,8 +51,6 @@ end
     patch 'customers/withdrawal' => 'customers#withdrawal'
   end
 
-  #admin/customersコントローラー
-   resources :customers,only:[:index,:show,:edit,:update]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
@@ -58,7 +59,7 @@ end
     resources :deliveries, only:[:index, :edit, :create, :update, :destroy]
   end
 
-  scope module: :admin do
+  namespace :admin do
     resources :customers, only:[:index, :show, :edit, :update]
   end
 
