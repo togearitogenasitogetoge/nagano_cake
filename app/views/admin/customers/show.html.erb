@@ -1,6 +1,8 @@
-<h3 class="p-2 mb-3 bg-secondary text-white col-3"><%= customer.full_name %></h3>
 
-<table>
+<div class="container">
+<h4 class="p-2 mb-3 bg-secondary text-white col-3"><%= @customer.full_name %>さんの会員詳細</h4>
+
+<table class="table table-bordered col-6">
       <tbody>
         <tr>
           <th>会員ID</th>
@@ -8,7 +10,7 @@
         </tr>
         <tr>
           <th>氏名</th>
-			    <td><%= @customer.fullname %></td>
+			    <td><%= @customer.full_name %></td>
         </tr>
         <tr>
           <th>フリガナ</th>
@@ -24,7 +26,7 @@
 		    </tr>
 		    <tr>
 		      <th>電話番号</th>
-		      <td><%= customer.phone_number %></td>
+		      <td><%= @customer.phone_number %></td>
 		    </tr>
 		    <tr>
 		      <th>メールアドレス</th>
@@ -36,8 +38,8 @@
 		    </tr>
 		    <tr>
 		      <th></th>
-		      <td><%= link_to  "編集する", edit_customer_path(@customer.id), class:"btn btn-sm btn-success" %></td>
-		      <!--<td>< link_to  "注文一覧を見る", class:"btn btn-sm btn-primary" %><td>注文商品が完成したらこれを追加する-->
-        <% end %>
+		      <td><%= link_to  "編集する", edit_admin_customer_path(@customer.id), class:"btn btn-sm btn-success" %></td>
+		      <!--顧客ごとの注文履歴一覧は必須機能ではないようです！要チェック<td>< link_to  "注文履歴一覧を見る", oders class:"btn btn-sm btn-primary" %><td>-->
       </tbody>
   </table>
+</div>

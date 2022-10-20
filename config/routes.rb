@@ -51,7 +51,6 @@ Rails.application.routes.draw do
     patch 'customers/withdrawal' => 'customers#withdrawal'
   end
 
-
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   # 顧客用-配送先
