@@ -5,7 +5,6 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-
   has_many :cart_products , dependent: :destroy
   has_many :orders , dependent: :destroy
   has_many :deliveries , dependent: :destroy
@@ -17,6 +16,5 @@ class Customer < ApplicationRecord
   def kana_full_name
     self.kana_family_name + " " + self.kana_first_name
   end
-
 
 end
