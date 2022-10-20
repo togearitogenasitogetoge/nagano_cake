@@ -37,8 +37,10 @@
       </table>
     <div class="d-inline-block">
     <p></p>
-    <h4 class="font-weight-bold">配送先</h4>
+    <span class="h4 font-weight-bold">配送先</span>
+    <span><%=link_to '一覧を見る', deliveries_path(current_customer),class: "btn btn-primary" %></span>
     <p></p>
-    <h4 class="font-weight-bold">注文履歴</h4>
+    <span class="h4 font-weight-bold">注文履歴</span>
+    <span><%=link_to '一覧を見る', orders_path(current_customer),class: "btn btn-primary" %></span>
     </div>
 </div>
