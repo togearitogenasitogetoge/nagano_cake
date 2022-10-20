@@ -1,0 +1,44 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-7">
+    <br>
+    <h4 class="col-md-3 alert-secondary">マイページ</h4>
+      <div class="d-inline-block">
+        <p></p>
+    　　<span class="h4 font-weight-bold">登録情報</span>
+      　<span><%=link_to '編集する' , customers_information_edit_path ,class: "btn btn-success" %></span>
+      　<p></p>
+      </div>
+      <table class="table table-bordered border-dark">
+        <tr>
+          <td class="table-active col-md-2">氏名</td>
+          <td class="col-md-6"><%= @customer.family_name %> <%= @customer.first_name %></td>
+        </tr>
+        <tr>
+          <td class="table-active">カナ</td>
+          <td><%= @customer.kana_family_name %> <%= @customer.kana_first_name %></td>
+        </tr>
+        <tr>
+          <td class="table-active">郵便番号</td>
+          <td><%= @customer.postal_code %></td>
+        </tr>
+        <tr>
+          <td class="table-active">住所</td>
+          <td><%= @customer.address %></td>
+        </tr>
+        <tr>
+          <td class="table-active">電話番号</td>
+          <td><%= @customer.phone_number %></td>
+        </tr>
+        <tr>
+          <td class="table-active">メールアドレス</td>
+          <td><%= @customer.email %></td>
+        </tr>
+      </table>
+    <div class="d-inline-block">
+    <p></p>
+    <h4 class="font-weight-bold">配送先</h4>
+    <p></p>
+    <h4 class="font-weight-bold">注文履歴</h4>
+    </div>
+</div>
