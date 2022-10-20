@@ -28,15 +28,16 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
   
+  # 商品
   namespace :admin do
     resources :products, only: [:new, :create, :index, :show, :edit, :update]
     resources :genres, only: [:create, :index, :edit, :update]
-    
-    
-    
   end
   
-end
+  namespace :public do
+    resources :products, only: [:index, :show]
+  end
+  
 
   #public/customersコントローラー
   scope module: :public do
@@ -47,9 +48,9 @@ end
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     patch 'customers/withdrawal' => 'customers#withdrawal'
   end
+  
+  
 
-  #admin/customersコントローラー
-   resources :customers,only:[:index,:show,:edit,:update]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
@@ -58,8 +59,8 @@ end
     resources :deliveries, only:[:index, :edit, :create, :update, :destroy]
   end
 
-  scope module: :admin do
+  namespace :admin do
     resources :customers, only:[:index, :show, :edit, :update]
   end
-
+  
 end
