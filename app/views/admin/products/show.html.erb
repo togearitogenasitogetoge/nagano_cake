@@ -1,0 +1,19 @@
+<h2>商品詳細</h2>
+
+
+<h3>商品名</h3>
+<%= @product.product_name %>
+
+<h3>商品説明</h3>
+<%= @product.product_description %>
+
+<h3>ジャンル</h3>
+<%= @product.genre.genre_name %>
+
+<h3>税込み価格</h3>
+<%= @product.tax_included_price.to_s(:delimited) %>
+
+<h3>販売ステータス</h3>
+<%= @product.sales_status %>
+
+<p><%= link_to '編集する',edit_admin_product_path(@product.id) %></p>

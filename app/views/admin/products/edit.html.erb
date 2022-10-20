@@ -1,0 +1,31 @@
+<h2>商品編集</h2>
+
+<%= form_with model: @product, url: admin_product_path, method: :patch do |f| %>
+
+
+  <div class ="edit_box">
+    <h3>商品画像</h3>
+    <%= f.file_field :product_image %>
+
+    <h3>商品名</h3>
+　  <%= f.text_field :product_name %>
+
+    <h3>商品説明</h3>
+    <%= f.text_area :product_description %>
+
+    <h3>ジャンル</h3>
+    <%= f.collection_select :genre_id, Genre.all, :id, :genre_name %>
+
+    <h3>税抜価格</h3>
+    <%= f.text_field :tax_excluded_price %>円
+
+    <h3>販売ステータス</h3>
+    <%= f.select :sales_status, ["販売中", "販売停止中"] ,class: "btn btn-primary"%>
+
+
+
+    <%= f.submit "変更を保存", class: "btn btn-success" %>
+
+  </div>
+
+<% end %>
