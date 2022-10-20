@@ -2,21 +2,24 @@ class Public::OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @customer = current_customer
   end
 
   def confirm
     @order = Order.new(order_params)
-    render :new if @order.invalid?
-  end
-
-  def complete
+    #render :new if @order.invalid?
   end
 
   def create
     @order = Order.new(order_params)
-    #@order.customer_id = current_customer.id
-    render :new and return if params[:back] || !@order.save
-    redirect_to "complete"
+    @order.customer_id = current_customer.id
+    #render :new and return if params[:back] || !
+    if @order.save
+      redirect_to "complete"
+    end
+  end
+
+  def complete
   end
 
   def index

@@ -15,47 +15,44 @@
 
       <div class="delivery">
         <h4>お届け先</h4><br>
-          <input type="radio" value="your_adress" name="delivery" id="your_adress">
-          <label style="display: inline-block;" for="your_adress">ご自身の住所</label><br>
-          <%= "@customer.postal_code" %>
-          <%= "@customer.adress" %><br>
-          <%= "@customer.name" %><br>
+          <input type="radio" value="your_address" name="delivery" id="your_address">
+          <label style="display: inline-block;" for="your_address">ご自身の住所</label><br>
+          <%= @customer.postal_code %>
+          <%= @customer.address %><br>
+          <%= @customer.family_name %>
+          <%= @customer.first_name %><br>
 
-          <input type="radio" value="registered" name="delivery" id="registered">
-          <label style="display: inline-block;" for="registered">登録済住所から選択</label><br>
-          <%= form_with model:@order, local:true do |f| %>
-            <%= "delivery.postal_code" %>
-            <%= "delivery.adress" %>
-            <%= "delivery.name" %>
-          <% end %>
+          <input type="radio" value="registered_address" name="delivery" id="registered_address">
+          <label style="display: inline-block;" for="registered_address">登録済住所から選択</label><br>
+          <%= "f.collection_select :delivery_id, Delivery.all, :id, :postal_code, :address, :name"  %>
 
-          <input type="radio" value="new_adress" name="delivery" id="new_adress">
+          <input type="radio" value="new_address" name="delivery" id="new_address">
           <label style="display: inline-block;" for="new_adress">新しいお届け先</label><br>
 
-          <%= form_with model:@order, local:true do |f| %>
+
+          <%= form_with model: @order, url: confirm_orders_path, local:true do |f| %>
             <div class="form-group">
               <h4>郵便番号</h4>
               <%= f.label :postal_code %>
-              <%= f.text_field :postal_code, class: 'form-control order_adress' %>
+              <%= f.text_field :postal_code, class: 'form-control order_address' %>
             </div>
             <div class="form-group">
               <h4>住所</h4>
-              <%= f.label :adress %>
-              <%= f.text_area :adress, class: 'form-control order_adress' %>
+              <%= f.label :address %>
+              <%= f.text_area :address, class: 'form-control order_address' %>
             </div>
             <div class="form-group">
               <h4>宛名</h4>
               <%= f.label :name %>
-              <%= f.text_field :name, class: 'form-control order_adress' %>
+              <%= f.text_field :name, class: 'form-control order_address' %>
+            </div>
+            <div class="btn-wrapper col-10 mx-auto">
+                <%= f.submit "確認画面へ進む", class: "btn btn-info btn-block confirm" %>
             </div>
           <% end %>
       </div>
 
-      <div class="btn-wrapper col-10 mx-auto">
-        <div class="row">
-          <%= link_to "確認画面へ進む","", class: "btn btn-info btn-block confirm" %>
-        </div>
-      </div>
 
+  
   </div>
 </div>
