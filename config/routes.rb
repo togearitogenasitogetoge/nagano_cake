@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+
   #管理者用
   #URL/admin/sign_in...
   devise_for :admins,skip:[:registrations,:passwords],controllers:{
@@ -14,6 +15,12 @@ Rails.application.routes.draw do
     sessions:'public/sessions'
   }
 
+ scope module: :public do
+    root to: "homes#top"
+    get 'home/about' => "homes#about", as: "about"
+  end
+
+
   scope module: :public do
     resources :orders, only:[:new, :create, :index, :show] do
       collection do
@@ -22,6 +29,7 @@ Rails.application.routes.draw do
       end
     end
   end
+
   scope module: :admin do
     get "admins" => "homes#top"
   end
@@ -31,12 +39,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :products, only: [:new, :create, :index, :show, :edit, :update]
     resources :genres, only: [:create, :index, :edit, :update]
-
-
-
   end
-
-
 
   #public/customersコントローラー
   scope module: :public do
