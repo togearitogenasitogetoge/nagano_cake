@@ -26,17 +26,17 @@ Rails.application.routes.draw do
     get "admins" => "homes#top"
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  
-  
+
+
   namespace :admin do
     resources :products, only: [:new, :create, :index, :show, :edit, :update]
     resources :genres, only: [:create, :index, :edit, :update]
-    
-    
-    
+
+
+
   end
-  
-end
+
+
 
   #public/customersコントローラー
   scope module: :public do
@@ -48,9 +48,6 @@ end
     patch 'customers/withdrawal' => 'customers#withdrawal'
   end
 
-  #admin/customersコントローラー
-   resources :customers,only:[:index,:show,:edit,:update]
-
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   # 顧客用-配送先
@@ -58,7 +55,7 @@ end
     resources :deliveries, only:[:index, :edit, :create, :update, :destroy]
   end
 
-  scope module: :admin do
+  namespace :admin do
     resources :customers, only:[:index, :show, :edit, :update]
   end
 
