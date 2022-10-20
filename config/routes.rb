@@ -41,12 +41,12 @@ Rails.application.routes.draw do
     resources :genres, only: [:create, :index, :edit, :update]
   end
 
+
   #public/customersコントローラー
   scope module: :public do
     get 'customers/my_page' => 'customers#show'
     get 'customers/information/edit' => 'customers#edit'
     patch 'customers/information' => 'customers#update'
-    put 'customers/information' => 'customers#update'
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     patch 'customers/withdrawal' => 'customers#withdrawal'
   end
