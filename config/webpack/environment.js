@@ -12,7 +12,6 @@ environment.plugins.prepend(
 
 module.exports = environment
 
-
 const webpack=require('webpack')
 environment.plugins.prepend(
   'Provide',

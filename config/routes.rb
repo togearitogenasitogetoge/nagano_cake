@@ -26,6 +26,16 @@ Rails.application.routes.draw do
     get "admins" => "homes#top"
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  
+  
+  namespace :admin do
+    resources :products, only: [:new, :create, :index, :show, :edit, :update]
+    resources :genres, only: [:create, :index, :edit, :update]
+    
+    
+    
+  end
+  
 end
 
   #public/customersコントローラー
