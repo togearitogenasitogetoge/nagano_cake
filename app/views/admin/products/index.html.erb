@@ -3,7 +3,9 @@
   <h2>商品一覧</h2>
 
   <div class="text-right">
-      <%= link_to "新規登録" ,new_admin_product_path, class:"btn btn-lg btn-success" %>
+      <%= link_to new_admin_product_path do %>
+      <button type="button" class="btn btn-light">+</button>
+      <% end %>
   </div>
 
   <table class= "table hover">
