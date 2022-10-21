@@ -36,6 +36,8 @@
           <label style="display: inline-block;" for="new_adress">新しいお届け先</label><br>
 
 
+          <%= form_with model: @delivery, url: confirm_orders_path, local:true do |f| %>
+
             <div class="form-group">
               <%= f.label :postal_code, "郵便番号" %>
               <%= f.text_field :postal_code, class: 'form-control order_address' %>

@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
 
-
   #管理者用
   #URL/admin/sign_in...
   devise_for :admins,skip:[:registrations,:passwords],controllers:{
@@ -42,6 +41,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:create, :index, :edit, :update]
   end
 
+
   scope module: :public do
     resources :products, only: [:index, :show]
   end
@@ -54,6 +54,12 @@ Rails.application.routes.draw do
     patch 'customers/information' => 'customers#update'
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     patch 'customers/withdrawal' => 'customers#withdrawal'
+  end
+
+
+  scope module: :public do
+    resources :cart_products, only:[:index, :update, :destroy, :destroy_all, :create]
+     delete '/cart_products/destroy_all' => 'cart_products#destroy_all'
   end
 
 

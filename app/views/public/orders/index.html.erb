@@ -12,9 +12,11 @@
               <th>注文詳細</th>
             </tr>
           </thead>
+           <% @orders.each do |order| %>
           <tbody>
             <tr>
-              <% "@orders.each do |order|" %>
+
+              
                 <td><%= "order.created_at" %></td>
                 <td><%= "order.name" %></td>
                 <td><%= "order.order_product" %></td>
@@ -27,9 +29,11 @@
                     </div>
                   </div>
                 </td>
-              <% "end" %>
+              
+              
             </tr>
           </tbody>
+           <% end %>
         </table>
   </div>
 </div>
