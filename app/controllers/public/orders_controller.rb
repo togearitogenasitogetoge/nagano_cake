@@ -3,9 +3,9 @@ class Public::OrdersController < ApplicationController
   def new
     @customer = current_customer
 
-    @deliveries = Delivery.where(customer_id: current_customer.id)
+    @deliveries = Delivery.where(current_customer)
 
-    @delivery = @customer.deliveries.new
+    #@delivery = @customer.deliveries.new
     @order = Order.new
 
   end
