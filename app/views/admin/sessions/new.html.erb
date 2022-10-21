@@ -1,19 +1,37 @@
-<h2>管理者ログイン</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :メールアドレス %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :パスワード %>
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "ログイン" %>
-  </div>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col centor-block">
+      <br></br>
+        <h3 class="col-md-3 alert-secondary">管理者ログイン</h3>
+                <br></br>
+                <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <table class="table table-borderless table-sm">
+                  <tr>
+                    <td class="col-md-2 col-md-offset-5"></td>
+                    <td class="col-md-2 col-md-offset-5"></td>
+                    <td></td>
+                    <td class="col-md-5 col-md-offset-5"></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td><%= f.label :メールアドレス %></td>
+                    <td class="form-group"><%= f.email_field :email, autofocus: true, autocomplete: "email" , :size=>"50" , placeholder: "sample@example.com"  %></td>
+                  </tr>
+                  <tr>
+                  <div class="form-group">
+                    <td></td>
+                    <td><%= f.label :パスワード %></td>
+                    <td class="form-control"><%= f.password_field :password, autocomplete: "current-password" , :size=>"50" %></td>
+                  </div>
+                  </tr>
+                  <tr>
+                    <td colspan="2"></td>
+                    <td>
+                      <div class="actions">
+                      <%= f.submit "ログイン" , class: "btn btn-success btn-block" %>
+                      </div>
+                    <td></td>
+                 </table>
+        <% end %>
 
 <%#= render "admin/shared/links" %>
