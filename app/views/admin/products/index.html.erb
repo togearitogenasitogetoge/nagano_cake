@@ -1,0 +1,36 @@
+<div class="container">
+
+  <h2>商品一覧</h2>
+
+  <div class="text-right">
+      <%= link_to new_admin_product_path do %>
+      <button type="button" class="btn btn-light">+</button>
+      <% end %>
+  </div>
+
+  <table class= "table hover">
+    <thead>
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>税抜価格</th>
+      <th>ジャンル</th>
+      <th>ステータス</th>
+    </thead>
+    <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.id %></td>
+        <td><%= link_to admin_product_path(product) do %>
+        <%= product.product_name %></td>
+        <% end %>
+        <td><%= product.tax_excluded_price %></td>
+        <td><%= product.genre.genre_name %></td>
+        <td><%= product.sales_status %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+</div>
+
+

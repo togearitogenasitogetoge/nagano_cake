@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="mt-2 p-2 text-center bg-secondary text-white col-3">
+    <h4>会員一覧</h4>
+  </div>
+
+  <table class="table table-bordered">
+    <thead class="thead-light">
+      <tr>
+        <th>会員ID</th>
+        <th>氏名</th>
+        <th>メールアドレス</th>
+        <th>ステータス</th>
+      </tr>
+    </thead>
+      <tbody>
+        <% @customers.each do |customer| %>
+        <tr>
+          <td><%= customer.id %></td>
+			    <td><%= link_to customer.full_name, admin_customer_path(customer.id) %></td>
+			    <td><%= customer.email %></td>
+			    <!--tdの中に作成-->
+		    	<!--<= form_with(model: @customer, local: true) do |form| >-->
+          <!--<= form.radio_button :追記, :true >-->
+          <!--<= form.label :追加, "有効">-->
+          <!--<= form.radio_button :追記, :false >-->
+          <!--<= form.label :追記, "退会" >-->
+          <!--< end >-->
+		    </tr>
+        <% end %>
+      </tbody>
+  </table>
+  <%= paginate @customers %>
+</div>
