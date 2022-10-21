@@ -2,18 +2,32 @@ class Public::OrdersController < ApplicationController
 
   def new
     @customer = current_customer
+
+    @deliveries = Delivery.where(customer_id: current_customer.id)
+
     @delivery = @customer.deliveries.new
     @order = Order.new
+
   end
 
   def confirm
     @order = Order.new(order_params)
+
+    if @order.invalid?
+      render :new
+    end
+
     @delivery = @customer.deliveries.new(delivery_params)
+
   end
 
   def create
     @order = Order.new(order_params)
+
+    @order.customer_id = current_customer.id
+
     #render :new and return if params[:back] || !
+
     if @order.save
       render :new
     end
@@ -40,7 +54,9 @@ class Public::OrdersController < ApplicationController
 
   def delivery_params
     params.require(:delivery).permit(:customer_id, :postal_code, :address, :name)
+
     # customerid必要？
+
   end
 
 end

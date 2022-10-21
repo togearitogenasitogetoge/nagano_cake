@@ -41,7 +41,8 @@ Rails.application.routes.draw do
     resources :genres, only: [:create, :index, :edit, :update]
   end
 
-  namespace :public do
+
+  scope module: :public do
     resources :products, only: [:index, :show]
   end
 
@@ -55,10 +56,12 @@ Rails.application.routes.draw do
     patch 'customers/withdrawal' => 'customers#withdrawal'
   end
 
+
   scope module: :public do
     resources :cart_products, only:[:index, :update, :destroy, :destroy_all, :create]
      delete '/cart_products/destroy_all' => 'cart_products#destroy_all'
   end
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 

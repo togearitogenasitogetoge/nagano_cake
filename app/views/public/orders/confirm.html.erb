@@ -12,8 +12,10 @@
       </thead>
       <tbody>
         <tr>
-          <td>
-          </td>
+          <td><%= "@order.product_id" %></td>
+          <td><%= "@order.tax_included_price" %></td>
+          <td><%= "@order.request_amount" %></td>
+          <td><%= "@order.tax_included_price * @order.request_amount" %></td>
         </tr>
       </tbody>
     </table>
@@ -27,8 +29,9 @@
       </thead>
       <tbody>
         <tr>
-          <td>
-          </td>
+          <td><%= "@order.shipping_fee" %></td>
+          <td><%= "@order.tax_included_price * @order.request_amount" %></td>
+          <td><%= "@order.tax_included_price * @order.request_amount + @order.shipping_fee" %></td>
         </tr>
       </tbody>
     </table>
