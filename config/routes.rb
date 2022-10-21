@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
 
-
   #管理者用
   #URL/admin/sign_in...
   devise_for :admins,skip:[:registrations,:passwords],controllers:{
@@ -35,17 +34,17 @@ Rails.application.routes.draw do
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  
+
   # 商品
   namespace :admin do
     resources :products, only: [:new, :create, :index, :show, :edit, :update]
     resources :genres, only: [:create, :index, :edit, :update]
   end
-  
+
   namespace :public do
     resources :products, only: [:index, :show]
   end
-  
+
 
   #public/customersコントローラー
   scope module: :public do
@@ -55,8 +54,12 @@ Rails.application.routes.draw do
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     patch 'customers/withdrawal' => 'customers#withdrawal'
   end
-  
- 
+
+  scope module: :public do
+    resources :cart_products, only:[:index, :update, :destroy, :destroy_all, :create]
+     delete '/cart_products/destroy_all' => 'cart_products#destroy_all'
+  end
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   # 顧客用-配送先
@@ -67,5 +70,5 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :customers, only:[:index, :show, :edit, :update]
   end
-  
+
 end
