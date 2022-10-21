@@ -7,12 +7,13 @@
       <h3>商品一覧（全<%= @products.count %>件）</h3>
       <% @products.each do |product| %>
         <div class="box1">
-    
-          <%= link_to "詳細", public_product_path(product) %>
+          <!--image-->
+          <%= link_to "詳細", product_path(product) %>
           <%= product.product_name %>
           <%= product.tax_included_price.to_s(:delimited) %>
         </div>
       <% end %>
     </div>
   </duv>
+  <%= paginate @products %>
 </div>

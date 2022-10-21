@@ -1,31 +1,70 @@
-<h2>商品編集</h2>
-
-<%= form_with model: @product, url: admin_product_path, method: :patch do |f| %>
-
-
-  <div class ="edit_box">
-    <h3>商品画像</h3>
-    <%= f.file_field :product_image %>
-
-    <h3>商品名</h3>
-　  <%= f.text_field :product_name %>
-
-    <h3>商品説明</h3>
-    <%= f.text_area :product_description %>
-
-    <h3>ジャンル</h3>
-    <%= f.collection_select :genre_id, Genre.all, :id, :genre_name %>
-
-    <h3>税抜価格</h3>
-    <%= f.text_field :tax_excluded_price %>円
-
-    <h3>販売ステータス</h3>
-    <%= f.select :sales_status, ["販売中", "販売停止中"] ,class: "btn btn-primary"%>
-
-
-
-    <%= f.submit "変更を保存", class: "btn btn-success" %>
-
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <h2>商品編集</h2>
+    </div>
   </div>
 
-<% end %>
+  <div class="row">
+    <div class="col-md-10">
+      <%= form_with model: @product, url: admin_product_path, method: :patch do |f| %>
+      <table>
+
+        <tr>
+          <div class="edit-form">
+            <th>商品画像</th>
+            <td><%= f.file_field :product_image %></td>
+          </div>
+        </tr>
+
+         <tr>
+          <div class="edit-form">
+            <th>商品名</th>
+            <td><%= f.text_field :product_name %></td>
+          </div>
+        </tr>
+
+         <tr>
+          <div class="edit-form">
+            <th>商品説明</th>
+            <td><%= f.text_area :product_description %></td>
+          </div>
+        </tr>
+
+         <tr>
+          <div class="edit-form">
+            <th>ジャンル</th>
+            <td><%= f.collection_select :genre_id, Genre.all, :id, :genre_name %></td>
+          </div>
+        </tr>
+
+         <tr>
+          <div class="edit-form">
+            <th>税抜価格</th>
+            <td><%= f.text_field :tax_excluded_price %>円</td>
+          </div>
+        </tr>
+
+         <tr>
+          <div class="edit-form">
+            <th>販売ステータス</th>
+            <td><%= f.radio_button :sales_status, true, checked: true %>
+      　　　　　　　　<%= f.label :sales_status, "販売中" %>
+　　　　　　　　<%= f.radio_button :sales_status, false %>
+　　　　　　　　<%= f.label :sales_status, "販売停止中" %>
+　　　　　　</td>
+          </div>
+        </tr>
+
+        <tr>
+          <div class="comnit">
+            <th><%= f.submit "変更を保存", class: "btn btn-success" %></th>
+          </div>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+
+
