@@ -7,13 +7,13 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @order = Order.new(order_params)
-    #render :new if @order.invalid?
+    render :new if @order.invalid?
   end
 
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-    #render :new and return if params[:back] || !
+    render :new and return if params[:back] || !
     if @order.save
       redirect_to "complete"
     end
