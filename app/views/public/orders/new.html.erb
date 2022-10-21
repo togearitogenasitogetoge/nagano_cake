@@ -4,14 +4,14 @@
       <h3>注文情報入力</h3>
 
 
-      <div class="payment_method">
-        <h4>支払方法</h4><br>
-          <input type="radio" value="credit" name="payment_method" id="credit">
-          <label style="display: inline-block;" for="credit">クレジットカード</label><br>
+      <!--<div class="payment_method">-->
+        <!--<h4>支払方法</h4><br>-->
+          <!--<input type="radio" value="credit" name="payment_method" id="credit">-->
+          <!--<label style="display: inline-block;" for="credit">クレジットカード</label><br>-->
 
-          <input type="radio" value="transfer" name="payment_method" id="transfer">
-          <label style="display: inline-block;" for="transfer">銀行振込</label>
-      </div>
+          <!--<input type="radio" value="transfer" name="payment_method" id="transfer">-->
+          <!--<label style="display: inline-block;" for="transfer">銀行振込</label>-->
+      <!--</div>-->
 
       <div class="delivery">
         <h4>お届け先</h4><br>
@@ -30,7 +30,7 @@
           <label style="display: inline-block;" for="new_adress">新しいお届け先</label><br>
 
 
-          <%= form_with model: @order, url: confirm_orders_path, local:true do |f| %>
+          <%= form_with model: @delivery, url: confirm_orders_path, local:true do |f| %>
             <div class="form-group">
               <h4>郵便番号</h4>
               <%= f.label :postal_code %>
@@ -53,6 +53,6 @@
       </div>
 
 
-  
+
   </div>
 </div>

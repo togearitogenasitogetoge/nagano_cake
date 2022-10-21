@@ -1,21 +1,21 @@
 class Public::OrdersController < ApplicationController
 
   def new
-    @order = Order.new
     @customer = current_customer
+    @delivery = @customer.deliveries.new
+    @order = Order.new
   end
 
   def confirm
     @order = Order.new(order_params)
-    #render :new if @order.invalid?
+    @delivery = @customer.deliveries.new(delivery_params)
   end
 
   def create
     @order = Order.new(order_params)
-    @order.customer_id = current_customer.id
     #render :new and return if params[:back] || !
     if @order.save
-      redirect_to "complete"
+      render :new
     end
   end
 
@@ -23,7 +23,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    @customer = current_customer
+    @orders = @customer.orders
+
   end
 
   def show
@@ -34,6 +36,11 @@ class Public::OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:customer_id, :payment_method, :order_status, :shipping_fee, :request_amount, :name, :postal_code, :address)
+  end
+
+  def delivery_params
+    params.require(:delivery).permit(:customer_id, :postal_code, :address, :name)
+    # customerid必要？
   end
 
 end

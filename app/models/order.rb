@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-
+belongs_to :customer
 
 
   validates :payment_method, presence:true
