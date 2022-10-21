@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
   belongs_to :genre
-  
+
   has_one_attached :product_image
 
   validates :product_name, presence: true
