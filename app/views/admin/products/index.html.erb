@@ -1,6 +1,7 @@
 <div class="container">
-
-  <h2>商品一覧</h2>
+  <div class="mt-2 p-2 text-center bg-secondary text-white col-3">
+    <h2>商品一覧</h2>
+  </div>
 
   <div class="text-right">
       <%= link_to new_admin_product_path do %>
@@ -8,8 +9,8 @@
       <% end %>
   </div>
 
-  <table class= "table hover">
-    <thead>
+  <table class= "table table-bordered">
+    <thead class="thead-light">
       <th>商品ID</th>
       <th>商品名</th>
       <th>税抜価格</th>
