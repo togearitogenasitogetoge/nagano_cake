@@ -16,11 +16,11 @@
         </thead>
         <tbody>
           <tr>
-            <td><%= "@order.created_at.strftime('%Y/%m/%d')" %></td>
+            <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
             <td>
-              <%= "@order.postal_code" %><br>
-              <%= "@order.adress" %><br>
-              <%= "@order.name" %>
+              <%= @order.postal_code %><br>
+              <%= @order.adress %><br>
+              <%= @order.name %>
             </td>
             <td><%= "@order.payment_method" %></td>
             <td><%= "@order.order_status" %></td>

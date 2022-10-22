@@ -3,22 +3,17 @@ class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
     @customer = current_customer
-
-
   end
 
   def confirm
     @order = Order.new(order_params)
-    binding.pry
+    #if 配送先のorder selectadd指定する　== "0"
+    #binding.pry
   end
 
   def create
     @order = Order.new(order_params)
-
-    @order.customer_id = current_customer.id
-
-    render :new and return if params[:back] || !
-
+    @customer = current_customer
 
     #render :new and return if params[:back] || !
 
