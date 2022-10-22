@@ -1,28 +1,15 @@
 class Public::OrdersController < ApplicationController
 
   def new
+    @order = Order.new
     @customer = current_customer
 
-    @deliveries = Delivery.where(customer_id: current_customer.id)
-
-    @delivery = @customer.deliveries.new
-    @order = Order.new
 
   end
 
   def confirm
     @order = Order.new(order_params)
-
-    render :new if @order.invalid?
-
-
-    if @order.invalid?
-      render :new
-    end
-
-    @delivery = @customer.deliveries.new(delivery_params)
-
-
+    binding.pry
   end
 
   def create
