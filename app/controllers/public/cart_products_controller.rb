@@ -1,7 +1,7 @@
 class Public::CartProductsController < ApplicationController
 
   def index
-    @cart_product = CartProduct.where(current_customer)
+    @cart_product = CartProduct.where(customer_id: current_customer.id)
   end
 
   def update

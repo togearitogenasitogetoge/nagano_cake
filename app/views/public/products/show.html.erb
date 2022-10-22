@@ -10,14 +10,21 @@
 
     <div class="col-md-5">
 
-  　　
+
       <h3><%= @product.product_name %></h3>
       <p><%= @product.product_description %></p>
       <p>¥<%= @product.tax_included_price.to_s(:delimited) %>(税込み）</p>
-      <!--if文で売り切れかどうか？-->
-      <!--form_with-->
-      <!--選択-->
-      <!--カートに入れる-->
+      <% if @product.sales_status == true %>
+        <%= form_with model: @cart_product, url: cart_products_path do |f| %>
+          <%= f.hidden_field :product_id, value: @product.id %>
+          <%= f.select :quantity, [['1個', 1], ['2個', 2], ['3個', 3], ['4個', 4], ['5個', 5], ['6個', 6], ['7個', 7], ['8個', 8], ['9個', 9]], {:prompt => "個数選択"} %>
+          <%= f.submit "カートに入れる", class: "btn btn-success" %>
+        <% end %>
+      <% else %>
+        <h4>売り切れ</h4>
+      <% end %>
+
+
 
     </div>
   </div>

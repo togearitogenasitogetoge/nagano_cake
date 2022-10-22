@@ -28,7 +28,7 @@ class Public::SessionsController < Devise::SessionsController
 
   protected
 
-   def reject_inactive_customer
+  def reject_inactive_customer
     @customer = Customer.find_by(email: params[:customer][:email])
     if @customer
       if @customer.valid_password?(params[:customer][:password]) && !@customer.customer_status
@@ -36,6 +36,7 @@ class Public::SessionsController < Devise::SessionsController
       end
     end
    end
+
 
   def after_sign_in_path_for(resource)
     customers_my_page_path
