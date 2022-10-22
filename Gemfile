@@ -59,5 +59,7 @@ gem 'devise'
 gem 'net-smtp'
 gem 'pry-rails'
 gem 'kaminari','~> 1.2.1'
+gem 'devise-i18n'
+gem 'enum_help'
 gem 'rails-i18n'
-gem "enum_help"
+
