@@ -11,8 +11,7 @@ class Order < ApplicationRecord
   validates :postal_code, presence:true
   validates :address, presence:true
 
-  enum payment_method: { クレジットカード: true, 銀行振込: false }
-
-  enum order_status: [:入金待ち, :入金確認, :製作中, :発送準備中, :発送済み]
+  #enum payment_method: { クレジットカード: true, 銀行振込: false }
+  #enum order_status: [:入金待ち, :入金確認, :製作中, :発送準備中, :発送済み]
 
 end
