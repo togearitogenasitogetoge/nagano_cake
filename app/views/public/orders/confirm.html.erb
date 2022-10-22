@@ -37,11 +37,13 @@
     </table>
     <h4>支払方法</h4>
     <h4>お届け先</h4>
-    <%= @delivery.address %>
+    <%= @order.address %>
     <div class="btn-wrapper col-10 mx-auto">
       <div class="row">
-        <%= link_to "注文を確定する", orders_path method: :post class: "btn btn-info btn-block confirm" %>
+        <%= link_to "注文を確定する", confirm_orders_path, class: "btn btn-info btn-block confirm" %>
+        <!--form_with hidden field-->
       </div>
     </div>
+
   </div>
 </div>
