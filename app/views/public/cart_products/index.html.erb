@@ -20,7 +20,7 @@
       <% @cart_product.each do |cart_product| %>
       <tbody>
         <tr>
-          <td><%=image_tag cart_product.product.product_image, size: "80×80" %>
+          <td><%=image_tag cart_product.product.product_image, size:"80×80" %>
               <%= cart_product.product.product_name %>
           </td>
 			    <td><%= cart_product.tax_included_price %></td>
@@ -36,7 +36,7 @@
 			   <tr>
           <td><%= link_to "買い物を続ける", public_products_path, class: "btn btn-sm btn-primary" %></td>
           <td bgcolor="#e9ecef">合計金額</td>
-          <td><% @合計金額 +=  cart_product.subtotal %></td>
+          <td><%= cart_product.subtotal %></td>
         </tr>
   　   </tbody>
   　 <% end %>
