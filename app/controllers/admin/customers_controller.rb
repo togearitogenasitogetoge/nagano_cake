@@ -24,8 +24,7 @@ class Admin::CustomersController < ApplicationController
  private
 
   def customer_params
-    params.require(:customer).permit(:family_name, :first_name, :kana_family_name, :kana_first_name, :postal_code, :address, :phone_number)
-    # 会員ステータスは作成してから追加する（？）
+    params.require(:customer).permit(:family_name, :first_name, :kana_family_name, :kana_first_name, :postal_code, :address, :phone_number, :customer_status)
   end
 
 end

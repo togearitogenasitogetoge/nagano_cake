@@ -1,19 +1,16 @@
 class Public::DeliveriesController < ApplicationController
+before_action :authenticate_customer!
 
   def index
     @delivery = Delivery.new
-    @deliveries = Delivery.all
+    @deliveries = current_customer.deliveries
   end
 
   def create
     @delivery = Delivery.new(delivery_params)
-    @delivery.customer_id = current_customer.id
-    if @delivery.save
-       redirect_to deliveries_path
-    else
-       @deliveries = Delivery.all
-       render "index"
-    end
+    @delivery.customer = current_customer
+    @delivery.save
+    redirect_to deliveries_path
   end
 
   def edit
@@ -22,11 +19,8 @@ class Public::DeliveriesController < ApplicationController
 
   def update
     @delivery = Delivery.find(params[:id])
-    if @delivery.update(delivery_params)
-      redirect_to deliveries_path
-    else
-       render request.referer
-    end
+    @delivery.update(delivery_params)
+    redirect_to deliveries_path
   end
 
   def destroy
