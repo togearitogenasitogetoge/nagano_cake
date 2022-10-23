@@ -17,8 +17,9 @@
         <th colspan="1"></th>
       </tr>
     </thead>
+     
+      <tbody> 
       <% @cart_products.each do |cart_product| %>
-      <tbody>
         <tr>
           <!--<td><=image_tag cart_product.product.product_image, size:"80×80" %>-->
           <td><%= cart_product.product.product_name %></td>
