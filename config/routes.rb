@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
 
+  namespace :admin do
+    get 'orders/show'
+  end
   #管理者用
   #URL/admin/sign_in...
   devise_for :admins,skip:[:registrations,:passwords],controllers:{
@@ -27,6 +30,10 @@ Rails.application.routes.draw do
         get :complete
       end
     end
+  end
+
+   namespace :admin do
+    resources :orders, only:[:show,:update]
   end
 
   scope module: :admin do
@@ -58,8 +65,8 @@ Rails.application.routes.draw do
 
 
   scope module: :public do
-    resources :cart_products, only:[:index, :update, :destroy, :destroy_all, :create]
-     delete '/cart_products/destroy_all' => 'cart_products#destroy_all'
+    delete '/cart_products/destroy_all' => 'cart_products#destroy_all'
+    resources :cart_products, only:[:index, :update, :destroy, :create]
   end
 
 
