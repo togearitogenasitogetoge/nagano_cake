@@ -1,6 +1,6 @@
 class CartProduct < ApplicationRecord
 
-  has_one_attached :image
+  has_one_attached :product_image
 
   belongs_to :product
   belongs_to :customer
