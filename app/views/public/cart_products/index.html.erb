@@ -16,6 +16,7 @@
         <th colspan="1"></th>
       </tr>
     </thead>
+
       <% @cart_products.each do |cart_product| %>
       <tbody>
         <tr>
@@ -35,7 +36,7 @@
     <table class="table table-bordered">
       　   <td class=""><%= link_to "買い物を続ける", products_path, class: "btn btn-sm btn-primary" %></td>
   　       <td bgcolor="#e9ecef">合計金額</td>
-  　       <td><%= @total.round.to_s(:delimited)%></td>
+  　       <td><%= @total.round.to_s(:delimited) %></td>
     </table>
     <div class="row justify-content-center"><%= link_to "入力情報に進む", new_order_path, class: "btn btn-sm btn-primary" %></div>
 </div>
