@@ -1,4 +1,17 @@
 class Public::CartProductsController < ApplicationController
+  before_action :authenticate_customer!
+
+
+  def create
+    @cart_product = CartProduct.new(cart_product_params)
+    @cart_product.customer_id = current_customer.id
+    if @cart_product.save
+		   redirect_to cart_products_path
+		else
+		   render template: "public/registrations/new"
+		end
+  end
+
 
   def index
     @cart_products = current_customer.cart_products

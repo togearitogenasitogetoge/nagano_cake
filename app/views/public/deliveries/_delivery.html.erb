@@ -1,8 +1,5 @@
-<div class="container">
-    <h4 class="mt-2 p-2 text-center bg-secondary text-white col-md-3">配送先編集</h4>
-
-      <%= form_with model: @delivery do |f| %>
-      <%= render "public/shared/error_messages", resource: @delivery %>
+<%= form_with model: delivery do |f| %>
+      
       <table class="table table-sm table-borderless">
         <tr>
           <td><%= f.label :postal_code, '郵便番号（ハイフンなし）' %></td>
