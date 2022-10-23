@@ -9,8 +9,12 @@ before_action :authenticate_customer!
   def create
     @delivery = Delivery.new(delivery_params)
     @delivery.customer = current_customer
-    @delivery.save
-    redirect_to deliveries_path
+    if @delivery.save
+       redirect_to deliveries_path
+    else
+       @deliveries = current_customer.deliveries
+       render :index
+    end
   end
 
   def edit
