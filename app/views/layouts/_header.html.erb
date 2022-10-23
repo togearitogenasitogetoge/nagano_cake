@@ -11,69 +11,69 @@
         <% if customer_signed_in? %>
           <li>
             <%= link_to customers_my_page_path(current_customer), class: 'btn btn-outline-secondary btn-block text-light' do %>
-              <span>マイページボタン</span>
+              <span>マイページ</span>
             <% end %>
           </li>
           <li>
             <%=  link_to products_path, class: 'btn btn-outline-secondary btn-block text-light' do %>
-              <span>商品一覧ボタン</span>
+              <span>商品一覧</span>
             <% end %>
           </li>
           <li>
             <%=  link_to orders_path, class: 'btn btn-outline-secondary btn-block text-light' do %>
-              <span>カートボタン</span>
+              <span>カート</span>
             <% end %>
           </li>
           <li>
             <%= link_to destroy_customer_session_path, method: :delete,class: 'btn btn-outline-secondary btn-block text-light' do %>
-              <span>ログアウトボタン</span>
+              <span>ログアウト</span>
             <% end %>
           </li>
         <% elsif admin_signed_in? %>
           <li>
             <%=  link_to admin_products_path, class: 'btn btn-outline-secondary btn-block text-light' do %>
-              <span>商品一覧ボタン</span>
+              <span>商品一覧</span>
             <% end %>
           </li>
           <li>
             <%=  link_to admin_customers_path, class: 'btn btn-outline-secondary btn-block text-light' do %>
-              <span>会員一覧ボタン</span>
+              <span>会員一覧</span>
             <% end %>
           </li>
           <li>
             <%= link_to admins_path, class: 'btn btn-outline-secondary btn-block text-light' do %>
-              <span>注文履歴一覧ボタン</span>
+              <span>注文履歴一覧</span>
             <% end %>
           </li>
           <li>
             <%= link_to admin_genres_path, class: 'btn btn-outline-secondary btn-block text-light' do %>
-              <span>ジャンル一覧ボタン</span>
+              <span>ジャンル一覧</span>
             <% end %>
           </li>
           <li>
             <%= link_to destroy_admin_session_path, method: :delete, class: 'btn btn-outline-secondary btn-block text-light' do %>
-              <span>ログアウトボタン</span>
+              <span>ログアウト</span>
             <% end %>
           </li>
         <% else %>
           <li>
             <%= link_to about_path, class: 'btn btn-outline-secondary btn-block text-light' do %>
-              <span>aboutボタン</span>
+              <span>about</span>
             <% end %>
           </li>
           <li>
             <%= link_to products_path, class: 'btn btn-outline-secondary btn-block text-light' do %>
-              <span>商品一覧ボタン</span>
+              <span>商品一覧</span>
             <% end %>
           </li>
           <li>
             <%= link_to new_customer_registration_path, method: :get, class: 'btn btn-outline-secondary btn-block text-light' do %>
-              <span>新規登録ボタン</span>
+              <span>新規登録</span>
             <% end %>
           </li>
           <li>
             <%= link_to new_customer_session_path, method: :get, class: 'btn btn-outline-secondary btn-block text-light' do %>
-              <span>ログインボタン</span>
+              <span>ログイン</span>
             <% end %>
           </li>
         <% end %>

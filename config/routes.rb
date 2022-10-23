@@ -14,63 +14,30 @@ Rails.application.routes.draw do
     sessions:'public/sessions'
   }
 
- scope module: :public do
+  scope module: :public do
     root to: "homes#top"
     get 'home/about' => "homes#about", as: "about"
-  end
-
-
-  scope module: :public do
-    resources :orders, only:[:new, :create, :index, :show] do
-      collection do
-        post :confirm
-        get :complete
-      end
-    end
-  end
-
-  scope module: :admin do
-    get "admins" => "homes#top"
-  end
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-
-
-  # 商品
-  namespace :admin do
-    resources :products, only: [:new, :create, :index, :show, :edit, :update]
-    resources :genres, only: [:create, :index, :edit, :update]
-  end
-
-
-  scope module: :public do
-    resources :products, only: [:index, :show]
-  end
-
-
-  #public/customersコントローラー
-  scope module: :public do
+    post 'orders/confirm' => 'orders#confirm'
+    get 'orders/complete' => 'orders#complete'
+    resources :orders, only:[:new, :create, :index, :show]
     get 'customers/my_page' => 'customers#show'
     get 'customers/information/edit' => 'customers#edit'
     patch 'customers/information' => 'customers#update'
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     patch 'customers/withdrawal' => 'customers#withdrawal'
-  end
-
-
-  scope module: :public do
-    resources :cart_products, only:[:index, :update, :destroy, :destroy_all, :create]
-     delete '/cart_products/destroy_all' => 'cart_products#destroy_all'
-  end
-
-
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-
-  # 顧客用-配送先
-  scope module: :public do
+    delete '/cart_products/destroy_all' => 'cart_products#destroy_all'
+    resources :cart_products, only:[:index, :update, :destroy, :create]
     resources :deliveries, only:[:index, :edit, :create, :update, :destroy]
+    resources :products, only: [:index, :show]
+  end
+
+  scope module: :admin do
+    get "admins" => "homes#top"
   end
 
   namespace :admin do
+    resources :products, only: [:new, :create, :index, :show, :edit, :update]
+    resources :genres, only: [:create, :index, :edit, :update]
     resources :customers, only:[:index, :show, :edit, :update]
   end
 
