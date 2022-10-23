@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row">
 
-    <%= form_with model: @order, url: confirm_orders_path, local:true do |f| %>
+    <%= form_with model: @order, url: orders_confirm_path, local:true do |f| %>
       <h4>支払方法</h4>
-      <%= f.radio_button :payment_method, true, checked: true %>
-      <%= f.label :payment_method, "クレジットカード" %><br>
 
+      <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+      <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %><br>
 
-      <%= f.radio_button :payment_method, false %>
-      <%= f.label :payment_method, "銀行振込" %><br>
+      <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+      <%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%><br>
 
 
       <h4>お届け先</h4>

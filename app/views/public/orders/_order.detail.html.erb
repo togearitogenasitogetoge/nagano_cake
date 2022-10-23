@@ -9,10 +9,10 @@
   </thead>
   <tbody>
     <tr>
-      <td><%= order.product_id %></td>
-      <td><%= order.tax_included_price %></td>
+      <td><%= order.product.product_id %></td>
+      <td><%= order.product.tax_included_price %></td>
       <td><%= order.request_amount %></td>
-      <td><%= order.tax_included_price * @order.request_amount %></td>
+      <td><%= order.cart.subtotal %></td>
     </tr>
   </tbody>
 </table>

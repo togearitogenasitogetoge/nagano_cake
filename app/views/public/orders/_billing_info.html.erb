@@ -9,8 +9,8 @@
   <tbody>
     <tr>
       <td><%= order.shipping_fee %></td>
-      <td><%= order.tax_included_price * order.request_amount %></td>
-      <td><%= order.tax_included_price * order.request_amount + order.shipping_fee %></td>
+      <td><%= order.cart_product.subtotal %></td>
+      <td><%= order.billing_amount %></td>
     </tr>
   </tbody>
 </table>
