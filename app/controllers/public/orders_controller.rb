@@ -2,6 +2,7 @@ class Public::OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @order.save
     @customer = current_customer
   end
 
@@ -12,6 +13,7 @@ class Public::OrdersController < ApplicationController
     @cart_products = current_customer.cart_products
     @total = @cart_products.inject(0) { |sum, product| sum + product.subtotal }
     @request_amount = @cart_products.inject(0) { |sum, product| sum + product.subtotal + 800 }
+
 
     if params[:order][:select_address] == "0"
       @order.postal_code = @customer.postal_code
@@ -46,7 +48,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find_by(id: params[:id])
+    @order = Order.find(id: params[:id])
   end
 
   private
