@@ -2,13 +2,14 @@ class Public::OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @order.save
     @customer = current_customer
   end
 
   def confirm
     @order = Order.new(order_params)
     @customer = current_customer
-    @delivery = Delivery.find(params[:order][:delivery_id])
+    @delivery = Delivery.find_by(params[:order][:delivery_id])
     #@product = Product.find(order_params[:product_id])
     #@cart_product = CartProduct.find(params[:cart_product_id])
     #cart = Cart.find(params[:cart_id])
@@ -46,7 +47,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find_by(id: params[:id])
+    @order = Order.find(id: params[:id])
   end
 
   private
