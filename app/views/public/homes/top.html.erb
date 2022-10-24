@@ -12,23 +12,27 @@
   </div>
 </div>
 
-<div class="container new-item">
+<div class="container">
   <h2>新着商品</h2>
   <div class="row">
     <% @products.first(4).each do |product| %>
-    <div class="card">
-      <div class="image">
+    <div class="row row-cols-4 row-cols-md-1">
+      <div class="card-deck" style="width:18rem">
+        <div class="card">
+          <div class="image">
         <!--画像-->
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"><%= product.product_name %></h5>
+            <p class="card-text"><%= product.tax_excluded_price %>円（税抜き）</p>
+          </div>
+        </div>
       </div>
-      <div class="card-body">
-        <p><%= product.product_name %></p>
-        <p><%= product.tax_excluded_price %>円（税抜き）</p>
-      </div>
-    <% end %>
     </div>
+    <% end %>
   </div>
-  <div class="container text-light">
-  <%= link_to "全ての商品をみる", products_path %>
+  <div class="container text-right">
+    <button type="button" class="btn btn-link"><%= link_to "全ての商品をみる", products_path %></button>
   </div>
 </div>
 
