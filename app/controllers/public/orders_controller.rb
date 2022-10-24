@@ -2,7 +2,6 @@ class Public::OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    @order.save
     @customer = current_customer
   end
 
@@ -31,18 +30,25 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
+    @cart_products = current_customer.cart_products.all
     @order = current_customer.orders.new(order_params)
-    @order.save!
-    @cart_items = current_customer.cart_products.all
+    if @order.save
       @cart_products.each do |cart_product|
-        order_products = @order.order_product.new
-        order_products.product_id = cart_product.product.id
-        order_products.name = cart_product.product.product_name
-        order_products.tax_included_price = cart_product.product.tax_included_price
-        order_products.quantity = cart_product.quantity
-        order_products.save
-        current_customer.cart_products.destroy_all
+        @order_product = OrderProduct.new
+        @order_product.product_id = cart_product.product_id
+        @order_product.order_id = @order.id
+        @order_product.quantity = cart_product.quantity
+        @order_product.tax_included_price = cart_product.product.tax_excluded_price
+        @order_product.save!
+      end
+      redirect_to orders_complete_path
+      @cart_products.destroy_all
+    else
+      @order = Order.new(order_params)
+      @customer = current_customer
+      render :new
     end
+
   end
 
   def complete
@@ -51,11 +57,15 @@ class Public::OrdersController < ApplicationController
   def index
     @customer = current_customer
     @orders = @customer.orders
-
+    #@order_products = @order.order_products
   end
 
   def show
-    @order = Order.find(id: params[:id])
+    @order = Order.find(params[:id])
+    @order_products = @order.order_products
+    @total = @order_products.inject(0) { |sum, order_product| sum + (order_product.product.tax_excluded_price * order_product.quantity) }
+    @total = @total * 1.1
+    @order.request_amount = @total + 800
   end
 
   private
