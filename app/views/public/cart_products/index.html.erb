@@ -1,7 +1,6 @@
 <div class="container">
-  <div class="mt-2 p-2 text-center bg-secondary text-white col-3">
-  <h4>ショッピングカート</h4>
-  </div>
+  <h4 class="mt-2 p-2 text-center bg-secondary text-white col-md-3">ショッピングカート</h4>
+
 
     <div class="float-right mb-3">
       <%= link_to "カートを空にする", cart_products_destroy_all_path, method: :delete, class: "btn btn-sm btn-danger" %>
@@ -17,9 +16,9 @@
         <th colspan="1"></th>
       </tr>
     </thead>
-     
-      <tbody> 
+
       <% @cart_products.each do |cart_product| %>
+      <tbody>
         <tr>
           <!--<td><=image_tag cart_product.product.product_image, size:"80×80" %>-->
           <td><%= cart_product.product.product_name %></td>
@@ -37,7 +36,7 @@
     <table class="table table-bordered">
       　   <td class=""><%= link_to "買い物を続ける", products_path, class: "btn btn-sm btn-primary" %></td>
   　       <td bgcolor="#e9ecef">合計金額</td>
-  　       <td><%= @total.round.to_s(:delimited)%></td>
+  　       <td><%= @total.round.to_s(:delimited) %></td>
     </table>
     <div class="row justify-content-center"><%= link_to "入力情報に進む", new_order_path, class: "btn btn-sm btn-primary" %></div>
 </div>

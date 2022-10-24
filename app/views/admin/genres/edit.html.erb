@@ -1,10 +1,10 @@
-<div class="container"></div>
+<div class="container">
   <div class="row">
     <div class="mt-2 p-2 text-center bg-secondary text-white col-3">
       <h4>ジャンル編集</h4>
     </div>
   </div>
-  <div class="row mt-4 p-2">
+  <div class="row">
     <div class="edit-genre-form">
       <%= form_with model: @genre, url: admin_genre_path(@genre.id), method: :patch do |f| %>
         <lavel>ジャンル名</lavel>

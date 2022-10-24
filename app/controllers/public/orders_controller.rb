@@ -9,10 +9,11 @@ class Public::OrdersController < ApplicationController
   def confirm
     @order = Order.new(order_params)
     @customer = current_customer
-    @delivery = Delivery.find_by(params[:order][:delivery_id])
-    #@product = Product.find(order_params[:product_id])
-    #@cart_product = CartProduct.find(params[:cart_product_id])
-    #cart = Cart.find(params[:cart_id])
+    @delivery = Delivery.find(params[:order][:delivery_id])
+    @cart_products = current_customer.cart_products
+    @total = @cart_products.inject(0) { |sum, product| sum + product.subtotal }
+    @request_amount = @cart_products.inject(0) { |sum, product| sum + product.subtotal + 800 }
+
 
     if params[:order][:select_address] == "0"
       @order.postal_code = @customer.postal_code
@@ -32,8 +33,8 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @customer = current_customer
-    if @order.save
-      render :new
+    if @order.save!
+      redirect_to "complete"
     end
   end
 
