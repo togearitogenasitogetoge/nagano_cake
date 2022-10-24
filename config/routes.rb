@@ -44,6 +44,7 @@ Rails.application.routes.draw do
     resources :products, only: [:new, :create, :index, :show, :edit, :update]
     resources :genres, only: [:create, :index, :edit, :update]
     resources :customers, only:[:index, :show, :edit, :update]
+  
   end
 
 end

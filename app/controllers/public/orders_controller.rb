@@ -35,12 +35,12 @@ class Public::OrdersController < ApplicationController
     @order.save!
     @cart_items = current_customer.cart_products.all
       @cart_products.each do |cart_product|
-        order_products = @order.order_product.new
-        order_products.product_id = cart_product.product.id
-        order_products.name = cart_product.product.product_name
-        order_products.tax_included_price = cart_product.product.tax_included_price
-        order_products.quantity = cart_product.quantity
-        order_products.save
+        order_product = @order.order_product.new
+        order_product.product_id = cart_product.product.id
+        order_product.name = cart_product.product.product_name
+        order_product.tax_included_price = cart_product.product.tax_included_price
+        order_product.quantity = cart_product.quantity
+        order_product.save
         current_customer.cart_products.destroy_all
     end
   end
