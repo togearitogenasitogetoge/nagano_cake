@@ -23,8 +23,11 @@ before_action :authenticate_customer!
 
   def update
     @delivery = Delivery.find(params[:id])
-    @delivery.update(delivery_params)
-    redirect_to deliveries_path
+    if @delivery.update(delivery_params)
+       redirect_to deliveries_path
+    else
+      render :edit
+    end
   end
 
   def destroy
