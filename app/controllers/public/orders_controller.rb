@@ -1,4 +1,5 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!
 
   def new
     @order = Order.new
@@ -8,20 +9,23 @@ class Public::OrdersController < ApplicationController
   def confirm
     @order = Order.new(order_params)
     @customer = current_customer
-    @delivery = Delivery.find(params[:order][:delivery_id])
     @cart_products = current_customer.cart_products
     @total = @cart_products.inject(0) { |sum, product| sum + product.subtotal }
     @order.request_amount = @total + 800
-
 
     if params[:order][:select_address] == "0"
       @order.postal_code = @customer.postal_code
       @order.address = @customer.address
       @order.name = @customer.first_name + @customer.family_name
     elsif params[:order][:select_address] == "1"
-      @order.postal_code = @delivery.postal_code
-      @order.address = @delivery.address
-      @order.name = @delivery.name
+      if Delivery.exists?(params[:order][:delivery_id])
+        @delivery = Delivery.find(params[:order][:delivery_id])
+        @order.postal_code = @delivery.postal_code
+        @order.address = @delivery.address
+        @order.name = @delivery.name
+      else
+        render :new
+      end
     elsif params[:order][:select_address] == "2"
       @order.postal_code
       @order.address
@@ -35,8 +39,8 @@ class Public::OrdersController < ApplicationController
     if @order.save
       @cart_products.each do |cart_product|
         @order_product = OrderProduct.new
-        @order_product.product_id = cart_product.product_id
         @order_product.order_id = @order.id
+        @order_product.product_id = cart_product.product.id
         @order_product.quantity = cart_product.quantity
         @order_product.tax_included_price = cart_product.product.tax_excluded_price
         @order_product.save!
@@ -57,7 +61,6 @@ class Public::OrdersController < ApplicationController
   def index
     @customer = current_customer
     @orders = @customer.orders
-    #@order_products = @order.order_products
   end
 
   def show

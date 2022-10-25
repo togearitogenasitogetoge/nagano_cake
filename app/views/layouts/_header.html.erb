@@ -3,7 +3,7 @@
     <div class="container">
       <a class="navbar-brand" href="/"><span>ながのCAKEロゴ</span></a>
       <% if customer_signed_in? %>
-      <p class="text-light m-2">ようこそ、<%= current_customer.full_name%> さん!</p>
+        <p class="text-light m-2">ようこそ、<%= current_customer.full_name%> さん!</p>
       <% end %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -12,73 +12,73 @@
         <ul class="navbar-nav ml-auto">
 
         <% if customer_signed_in? %>
-          <li>
+          <div class="ml-3">
             <%= link_to customers_my_page_path(current_customer), class: 'btn btn-outline-secondary btn-block text-light' do %>
               <span>マイページ</span>
             <% end %>
-          </li>
-          <li>
-            <%=  link_to products_path, class: 'btn btn-outline-secondary btn-block text-light' do %>
-              <span>商品一覧</span>
-            <% end %>
-          </li>
-          <li>
-            <%=  link_to orders_path, class: 'btn btn-outline-secondary btn-block text-light' do %>
-              <span>カート</span>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to destroy_customer_session_path, method: :delete,class: 'btn btn-outline-secondary btn-block text-light' do %>
-              <span>ログアウト</span>
-            <% end %>
-          </li>
-        <% elsif admin_signed_in? %>
-          <li>
-            <%=  link_to admin_products_path, class: 'btn btn-outline-secondary btn-block text-light' do %>
-              <span>商品一覧</span>
-            <% end %>
-          </li>
-          <li>
-            <%=  link_to admin_customers_path, class: 'btn btn-outline-secondary btn-block text-light' do %>
-              <span>会員一覧</span>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to admins_path, class: 'btn btn-outline-secondary btn-block text-light' do %>
-              <span>注文履歴一覧</span>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to admin_genres_path, class: 'btn btn-outline-secondary btn-block text-light' do %>
-              <span>ジャンル一覧</span>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to destroy_admin_session_path, method: :delete, class: 'btn btn-outline-secondary btn-block text-light' do %>
-              <span>ログアウト</span>
-            <% end %>
-          </li>
-        <% else %>
-          <li>
-            <%= link_to about_path, class: 'btn btn-outline-secondary btn-block text-light' do %>
-              <span>about</span>
-            <% end %>
-          </li>
-          <li>
+          </div>
+          <div class="ml-3">
             <%= link_to products_path, class: 'btn btn-outline-secondary btn-block text-light' do %>
               <span>商品一覧</span>
             <% end %>
-          </li>
-          <li>
+          </div>
+          <div class="ml-3">
+            <%= link_to cart_products_path, class: 'btn btn-outline-secondary btn-block text-light' do %>
+              <span>カート</span>
+            <% end %>
+          </div>
+          <div class="ml-3">
+            <%= link_to destroy_customer_session_path, method: :delete,class: 'btn btn-outline-secondary btn-block text-light' do %>
+              <span>ログアウト</span>
+            <% end %>
+          </div>
+        <% elsif admin_signed_in? %>
+          <div class="ml-3">
+            <%= link_to admin_products_path, class: 'btn btn-outline-secondary btn-block text-light' do %>
+              <span>商品一覧</span>
+            <% end %>
+          </div>
+          <div class="ml-3">
+            <%= link_to admin_customers_path, class: 'btn btn-outline-secondary btn-block text-light' do %>
+              <span>会員一覧</span>
+            <% end %>
+          </div>
+          <div class="ml-3">
+            <%= link_to admins_path, class: 'btn btn-outline-secondary btn-block text-light' do %>
+              <span>注文履歴一覧</span>
+            <% end %>
+          </div>
+          <div class="ml-3">
+            <%= link_to admin_genres_path, class: 'btn btn-outline-secondary btn-block text-light' do %>
+              <span>ジャンル一覧</span>
+            <% end %>
+          </div>
+          <div class="ml-3">
+            <%= link_to destroy_admin_session_path, method: :delete, class: 'btn btn-outline-secondary btn-block text-light' do %>
+              <span>ログアウト</span>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="ml-3">
+            <%= link_to about_path, class: 'btn btn-outline-secondary btn-block text-light' do %>
+              <span>about</span>
+            <% end %>
+          </div>
+          <div class="ml-3">
+            <%= link_to products_path, class: 'btn btn-outline-secondary btn-block text-light' do %>
+              <span>商品一覧</span>
+            <% end %>
+          </div>>
+          <div class="ml-3">
             <%= link_to new_customer_registration_path, method: :get, class: 'btn btn-outline-secondary btn-block text-light' do %>
               <span>新規登録</span>
             <% end %>
-          </li>
-          <li>
+          </div>
+          <div class="ml-3">
             <%= link_to new_customer_session_path, method: :get, class: 'btn btn-outline-secondary btn-block text-light' do %>
               <span>ログイン</span>
             <% end %>
-          </li>
+          </div>
         <% end %>
         </ul>
       </div>
