@@ -20,7 +20,6 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get 'home/about' => "homes#about", as: "about"
-
     post 'orders/confirm' => 'orders#confirm'
     get 'orders/complete' => 'orders#complete'
     resources :orders, only:[:new, :create, :index, :show]
@@ -38,7 +37,6 @@ Rails.application.routes.draw do
 
   scope module: :admin do
     get "admins" => "homes#top"
-
   end
 
   namespace :admin do
