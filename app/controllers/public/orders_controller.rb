@@ -3,7 +3,6 @@ class Public::OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    @order.save
     @customer = current_customer
   end
 
@@ -35,9 +34,10 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
+    @cart_products = current_customer.cart_products.all
     @order = current_customer.orders.new(order_params)
-    if@order.save!
-    @cart_items = current_customer.cart_products.all
+
+    if @order.save
       @cart_products.each do |cart_product|
         @order_product = OrderProduct.new
         @order_product.order_id = @order.id
@@ -53,6 +53,7 @@ class Public::OrdersController < ApplicationController
       @customer = current_customer
       render :new
     end
+
   end
 
   def complete
@@ -64,18 +65,17 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(id: params[:id])
+    @order = Order.find(params[:id])
+    @order_products = @order.order_products
+    @total = @order_products.inject(0) { |sum, order_product| sum + (order_product.product.tax_excluded_price * order_product.quantity) }
+    @total = @total * 1.1
+    @order.request_amount = @total + 800
   end
 
   private
 
   def order_params
     params.require(:order).permit(:customer_id, :payment_method, :order_status, :shipping_fee, :request_amount, :name, :postal_code, :address)
-  end
-
-  #いらないかも
-  def order_product_params
-    params.require(:order_product).permit(:order_id, :work_status, :product_id, :quantity, :tax_included_price)
   end
 
 end
