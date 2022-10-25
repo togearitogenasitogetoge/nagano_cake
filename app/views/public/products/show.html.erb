@@ -1,7 +1,5 @@
 <div class="container">
   <div class="row">
-    
-
     <div class="col-md-3">
       <p>任意の検索</p>
     </div>
@@ -18,17 +16,12 @@
       <% if @product.sales_status == true %>
         <%= form_with model: @cart_product, url: cart_products_path do |f| %>
           <%= f.hidden_field :product_id, value: @product.id %>
-          <%= f.hidden_field :customer_id, value: current_customer.id %>
           <%= f.select :quantity, [['1個', 1], ['2個', 2], ['3個', 3], ['4個', 4], ['5個', 5], ['6個', 6], ['7個', 7], ['8個', 8], ['9個', 9]], {:prompt => "個数選択"} %>
           <%= f.submit "カートに入れる", class: "btn btn-success" %>
         <% end %>
       <% else %>
         <h4>売り切れ</h4>
       <% end %>
-
-
-
     </div>
   </div>
-
 </div>

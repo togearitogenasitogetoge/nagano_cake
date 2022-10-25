@@ -13,7 +13,7 @@ class Public::CartProductsController < ApplicationController
           @cart_product.delete
         end
       end
-    @cart_product.save
+      @cart_product.save
 		  redirect_to cart_products_path
   end
 
