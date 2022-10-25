@@ -1,17 +1,26 @@
 class Admin::OrdersController < ApplicationController
 
   def show
-    @customer=Customer.find(params[:id])
     @order=Order.find(params[:id])
+    #@customer=@order.customer
     @order_product=@order.order_products
+    #@product=@order_product.products
+    #@total = @order_products.inject(0) { |sum, order_product| sum + (order_product.product.tax_excluded_price * order_product.quantity) }
+    #@total = @total * 1.1
+    #@order.request_amount = @total + 800
+
   end
 
   def update
     @order=Order.find(params[:id])
-    if @order.update(order_status_params)
-      @order.order_product.update_all(status:1) if @order.status == 1
+    @order_product=@order.order_products
+    @order.update(order_status_params)
+      if @order.order_status == "payment_confirmation"
+      @order_product.update_all(work_status: "制作待ち")
       redirect_to request.referer
-    end
+      else
+      redirect_to request.referer
+      end
   end
 
   private
@@ -19,4 +28,5 @@ class Admin::OrdersController < ApplicationController
   def order_status_params
     params.require(:order).permit(:order_status)
   end
+
 end

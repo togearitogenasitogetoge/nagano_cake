@@ -4,17 +4,17 @@ class Admin::OrderProductsController < ApplicationController
     @order_product = OrderProduct.find(params[:id])
     @order = @order_product.order
     # binding.pry
-    @order.update(order_product_params)
-
-    if @order_product.work_status == "製作中"
-      @order.update(status: 2)
+    @order_product.update(order_product_params)
+    redirect_to request.referer
+    #if @order_product.work_status == "製作中"
+      #@order.update(status: 2)
       # @order.save
-    end
+    #end
 
-    if @order.order_products.quantity == @order.order_products.where(work_status:3).quantity
-     @order.update(status: 3)
+    #if @order.order_products.quantity == @order.order_products.where(work_status:3).quantity
+     #@order.update(status: 3)
       # @order.save
-    end
+    #end
 
 
   end
@@ -23,8 +23,8 @@ class Admin::OrderProductsController < ApplicationController
 
   def order_product_params
     # f.fieldの話で他の情報はいるのか
-    # params.require(:order_product).permit(:work_status)
-    params.require(:order_product).permit(:order_id, :work_status, :product_id, :quantity, :tax_included_price)
+     params.require(:order_product).permit(:work_status)
+    #params.require(:order_product).permit(:order_id, :work_status, :product_id, :quantity, :tax_included_price)
   end
 
 end
