@@ -3,6 +3,7 @@ class Admin::OrderProductsController < ApplicationController
   def update
     @order_product = OrderProduct.find(params[:id])
     @order = @order_product.order
+
     @order_product.update(order_product_params)
     if @order_product.work_status == "製作中"
       @order.update(order_status:"製作中")
@@ -40,7 +41,6 @@ class Admin::OrderProductsController < ApplicationController
   def order_product_params
     # f.fieldの話で他の情報はいるのか
      params.require(:order_product).permit(:work_status)
-    # params.require(:order_product).permit(:order_id, :work_status, :product_id, :quantity, :tax_included_price)
   end
 
 end

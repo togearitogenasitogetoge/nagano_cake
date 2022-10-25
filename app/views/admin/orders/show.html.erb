@@ -10,31 +10,32 @@
                     <td></td>
                    </tr>
                 </thead>
-                <tr>
+                <tbody>
+                    <tr>
                     <td></td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>購入者</td>
-                    <td></td>
+                    <td><%= @order.name %></td>
                 </tr>
                 <tr>
                     <td>注文日</td>
-                    <td></td>
+                    <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
                 </tr>
                 <tr>
                     <td>配送先</td>
-                    <td></td>
+                    <td>〒<%= @order.postal_code %><%= @order.address %></td>
                 </tr>
                 <tr>
                     <td>支払方法</td>
-                    <td></td>
+                    <td><%= @order.payment_method_i18n %></td>
                 </tr>
                 <tr>
                     <td>注文ステータス</td>
                     <td>
                         <%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
-                        <%= f.select :order_status, Order.order_statuses.keys, class: "order_status" %>
+                        <%= f.select :order_status, Order.order_statuses_i18n.invert, class: "order_status" %>
                         <%= f.submit "更新" , class: "btn btn-outline-success" %>
                         <% end %>
                     </td>
@@ -49,6 +50,7 @@
                     <td>小計</td>
                     <td>制作ステータス</td>
                 </tr>
+               
                 <tr>
                     <td><%= order_product.product.product_name %></td>
                     <td><%= order_product.product.tax_included_price %></td>
@@ -61,7 +63,21 @@
                         <% end %>
                     </td>
                 </tr>
-            <% end %>
+                <% end %>
+                <tr>
+                    <td>商品合計</td>
+                    <td><%#= @total.round.to_s(:delimited) %></td>
+                </tr>
+                <tr>
+                    <td>送料</td>
+                    <td>800円</td>
+                </tr>
+                <tr>
+                    <td>請求金額合計</td>
+                    <td><%#= @order.request_amount.round.to_s(:delimited) %></td>
+                </tr>
+                </tbody>
+
             </table>
         </div>
     </div>

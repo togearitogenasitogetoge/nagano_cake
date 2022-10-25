@@ -3,7 +3,7 @@ class OrderProduct < ApplicationRecord
   belongs_to :product
 
   def tax_included_price
-        (self.tax_excluded_price * 1.1).round
+        (product.tax_excluded_price * 1.1).round
   end
 
   def subtotal
