@@ -8,7 +8,6 @@ class Admin::OrdersController < ApplicationController
     #@total = @order_products.inject(0) { |sum, order_product| sum + (order_product.product.tax_excluded_price * order_product.quantity) }
     #@total = @total * 1.1
     #@order.request_amount = @total + 800
-
   end
 
   def update

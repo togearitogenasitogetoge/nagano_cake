@@ -1,27 +1,40 @@
 <div class="container">
   <div class="row">
-      <h4>注文履歴一覧</h4>
-        <table class="table table-hover table-inverse">
-          <thead>
-            <tr>
-              <th>購入日時</th>
-              <th>購入者</th>
-              <th>注文個数</th>
-              <th>注文ステータス</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @orders.each do |order| %>
-            <tr>
-              <td><%= order.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-              <td><%= order.customer %></td>
-              <td><%= order.request_amount %></td>
-              <td><%= order.order_status %></td>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
+    <div class="col">
+      <h4 class="mt-2 p-2 text-center bg-secondary text-white col-md-3">注文履歴一覧</h4>
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th>購入日時</th>
+            <th>購入者</th>
+            <th>注文個数</th>
+            <th>注文ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @orders.each do |order| %>
+          <tr>
+            <td>
+              <%= link_to admin_orders_path do %>
+                <%= order.created_at.strftime('%Y/%m/%d %H:%M') %>
+              <% end %></td>
+            <td>
+              <%= order.customer.first_name %>
+              <%= order.customer.family_name %>
+            </td>
+            <td>
+              <% @sum = 0 %>
+              <% order.order_products.each do |order_product| %>
+                <% order_product.quantity %>
+                <% @sum += order_product.quantity %>
+              <% end %>
+              <%= @sum %>
+            </td>
+            <td><%= order.order_status_i18n %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
-
-

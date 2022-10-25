@@ -20,7 +20,6 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get 'home/about' => "homes#about", as: "about"
-
     post 'orders/confirm' => 'orders#confirm'
     get 'orders/complete' => 'orders#complete'
     resources :orders, only:[:new, :create, :index, :show]
@@ -33,11 +32,11 @@ Rails.application.routes.draw do
     resources :cart_products, only:[:index, :update, :destroy, :create]
     resources :deliveries, only:[:index, :edit, :create, :update, :destroy]
     resources :products, only: [:index, :show]
+    resources :genres, only: [:show]
   end
 
   scope module: :admin do
     get "admins" => "homes#top"
-
   end
 
   namespace :admin do
@@ -46,7 +45,7 @@ Rails.application.routes.draw do
     resources :customers, only:[:index, :show, :edit, :update]
     resources :orders, only:[:show, :update] do
       member do
-      resources:order_products,only:[:update]
+      resources :order_products, only:[:update]
       end
     end
   end
