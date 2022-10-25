@@ -2,12 +2,10 @@ class Admin::OrdersController < ApplicationController
 
   def show
     @order=Order.find(params[:id])
-    #@customer=@order.customer
     @order_product=@order.order_products
-    #@product=@order_product.products
-    #@total = @order_products.inject(0) { |sum, order_product| sum + (order_product.product.tax_excluded_price * order_product.quantity) }
-    #@total = @total * 1.1
-    #@order.request_amount = @total + 800
+    @total = @order_product.inject(0) { |sum, order_product| sum + (order_product.product.tax_excluded_price * order_product.quantity) }
+    @total = @total * 1.1
+    @order.request_amount = @total + 800
   end
 
   def update
