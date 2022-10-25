@@ -11,24 +11,16 @@ class Admin::OrderProductsController < ApplicationController
 
 
 
-    if @order_product.work_status == "制作完了"
-      @order.update(order_status:"発送準備中")
-    end
-
-      # @order.update(order_status: 2)
-      # @order.save
+    # if @order_product.work_status == "制作完了"
+      # @order.update(order_status:"発送準備中")
     # end
 
-    #if @order_product.update(order_product_params)
-    # @order.update_all(order_status: 3) if @order_product.work_status == 3
-    #end
+    if @order.order_products.count == @order.order_products.where(work_status: "制作完了").count
+      @order.update(order_status: "発送準備中")
+    end
 
 
-      # if @order_product.update(order_product_params)
-      # @order_product.work_status == "in_production"
-      # @order.update(order_status: 3)
-      # @order.save
-      # end
+
 
   redirect_to request.referer
     # end
