@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     resources :cart_products, only:[:index, :update, :destroy, :create]
     resources :deliveries, only:[:index, :edit, :create, :update, :destroy]
     resources :products, only: [:index, :show]
+    resources :genres, only: [:show]
   end
 
   scope module: :admin do

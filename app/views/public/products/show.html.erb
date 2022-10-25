@@ -1,16 +1,17 @@
 <div class="container">
   <div class="row">
+    
 
     <div class="col-md-3">
       <p>任意の検索</p>
     </div>
+     <%= render "public/genres/genre_lists", genres: @genres %>
     <div class="col-md-4">
        <h2>image</h2>
     </div>
 
     <div class="col-md-5">
-
-
+     <%= image_tag @product.get_image, size:'100x100', class:"card-img-top" %>
       <h3><%= @product.product_name %></h3>
       <p><%= @product.product_description %></p>
       <p>¥<%= @product.tax_included_price.to_s(:delimited) %>(税込み）</p>
