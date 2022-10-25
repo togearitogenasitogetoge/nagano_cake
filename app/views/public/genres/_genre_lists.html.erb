@@ -1,0 +1,7 @@
+<ul class="list-group">
+  <% genres.each do |genre| %>
+    <li class="list-group-item">
+      <%= link_to genre.genre_name, genre_path(genre.id) %>
+    </li>
+  <% end %>
+</div>
