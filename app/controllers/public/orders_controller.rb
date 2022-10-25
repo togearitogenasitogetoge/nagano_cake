@@ -3,6 +3,7 @@ class Public::OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @order.save
     @customer = current_customer
   end
 
@@ -34,9 +35,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    @cart_products = current_customer.cart_products.all
     @order = current_customer.orders.new(order_params)
-    if @order.save
+    @order.save!
+    @cart_items = current_customer.cart_products.all
       @cart_products.each do |cart_product|
         @order_product = OrderProduct.new
         @order_product.order_id = @order.id
@@ -52,7 +53,6 @@ class Public::OrdersController < ApplicationController
       @customer = current_customer
       render :new
     end
-
   end
 
   def complete
@@ -64,11 +64,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
-    @order_products = @order.order_products
-    @total = @order_products.inject(0) { |sum, order_product| sum + (order_product.product.tax_excluded_price * order_product.quantity) }
-    @total = @total * 1.1
-    @order.request_amount = @total + 800
+    @order = Order.find(id: params[:id])
   end
 
   private
