@@ -41,7 +41,7 @@
                     </td>
                 </tr>
             </table>
-            <% @order_products.each do |order_product| %>
+            <% @order_product.each do |order_product| %>
             <table>
                 <tr>
                     <td>商品名</td>
@@ -50,7 +50,7 @@
                     <td>小計</td>
                     <td>制作ステータス</td>
                 </tr>
-               
+
                 <tr>
                     <td><%= order_product.product.product_name %></td>
                     <td><%= order_product.product.tax_included_price %></td>
