@@ -2,6 +2,8 @@ class OrderProduct < ApplicationRecord
   belongs_to :order
   belongs_to :product
 
+  validates :quantity, numericality: { only_integer: true }
+
   def tax_included_price
         (product.tax_excluded_price * 1.1).round
   end

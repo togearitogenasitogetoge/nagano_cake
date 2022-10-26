@@ -24,7 +24,7 @@
         <td><%= link_to admin_product_path(product) do %>
         <%= product.product_name %></td>
         <% end %>
-        <td><%= product.tax_excluded_price %></td>
+        <td><%= product.tax_excluded_price.to_s(:delimited) %></td>
         <td><%= product.genre.genre_name %></td>
         <td>
           <% if product.sales_status == true %>
