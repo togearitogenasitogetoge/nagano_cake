@@ -1,12 +1,17 @@
 class Product < ApplicationRecord
   belongs_to :genre
   has_many :cart_products
+  has_many :order_products, dependent: :destroy
 
 
   has_one_attached :product_image
 
   validates :product_name, presence: true
-  
+  validates :product_image, presence: true
+  validates :product_description, presence: true
+  validates :tax_excluded_price, presence: true
+  validates :genre_id, presence: true
+
 
 
   def tax_included_price
