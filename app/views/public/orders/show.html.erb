@@ -1,11 +1,13 @@
 <div class="container">
+  <br><br>
   <div class="row">
     <h4 class="mt-2 p-2 text-center bg-secondary text-white col-md-3">注文履歴詳細</h4>
   </div>
   <div class="row">
-    <div class="col">
+    <div class="col-8">
       <h5>注文情報</h5>
-      <table class="table table-hover table-inverse">
+      <table class="table table-bordered">
+        <thead class="thead-light">
         <tr><th>注文日</th><td><%= @order.created_at.strftime('%Y/%m/%d') %></td></tr>
         <tr>
           <th>配送先</th>
@@ -19,36 +21,40 @@
         <tr><th>ステータス</th><td><%= @order.order_status_i18n %></td></tr>
       </table>
     </div>
-    <div class="col">
+    <div class="col-3">
       <h5>請求情報</h5>
-      <table class="table table-hover table-inverse">
+      <table class="table table-bordered">
+        <thead class="thead-light">
+        <tr><th>送料</th><td><%= "800円" %></td></tr>
         <tr><th>商品合計</th><td><%= @total.round.to_s(:delimited) %>円</td></tr>
         <tr><th>請求金額</th><td><%= @order.request_amount.round.to_s(:delimited) %>円</td></tr>
       </table>
     </div>
   </div>
   <div class="row">
-    <h5>注文内容</h5>
-    <table class="table table-hover table-inverse">
-      <thead>
-        <tr>
-          <th>商品名</th>
-          <th>単価（税込）</th>
-          <th>数量</th>
-          <th>小計</th>
-        </tr>
-      </thead>
-      <% @order_products.each do |order_product| %>
-      <tbody>
-        <tr>
-          <td><%= order_product.product.product_name %></td>
-          <td><%= order_product.product.tax_included_price.to_s(:delimited) %>円</td>
-          <td><%= order_product.quantity %>個</td>
-          <td><%= order_product.subtotal.to_s(:delimited)  %>円</td>
-        </tr>
-      </tbody>
-      <% end %>
-    </table>
+    <div class="col-9">
+      <h5>注文内容</h5>
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <% @order_products.each do |order_product| %>
+        <tbody>
+          <tr>
+            <td><%= order_product.product.product_name %></td>
+            <td><%= order_product.product.tax_included_price.to_s(:delimited) %>円</td>
+            <td><%= order_product.quantity %>個</td>
+            <td><%= order_product.subtotal.to_s(:delimited)  %>円</td>
+          </tr>
+        </tbody>
+        <% end %>
+        </table>
+      </div>
     </div>
   </div>
 </div>
