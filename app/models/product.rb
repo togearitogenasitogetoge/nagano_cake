@@ -13,6 +13,7 @@ class Product < ApplicationRecord
   validates :genre_id, presence: true
 
 
+
   def tax_included_price
         (self.tax_excluded_price * 1.1).round
   end
