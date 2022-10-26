@@ -19,7 +19,7 @@
           <tr>
             <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
             <td>
-              <%= order.postal_code %><br>
+              〒<%= order.postal_code %><br>
               <%= order.address %><br>
               <%= order.name %>
             </td>
@@ -28,7 +28,7 @@
                 <%= order_product.product.product_name %>
               <% end %>
             </td>
-            <td><%= order.request_amount %></td>
+            <td><%= order.request_amount.to_s(:delimited) %>円</td>
             <td><%= order.order_status_i18n %></td>
             <td>
               <div class="btn-wrapper col-10 mx-auto">
@@ -40,7 +40,7 @@
           </tr>
         </tbody>
       <% end %>
-      </table>>
+      </table>
     </div>
   </div>
 </div>

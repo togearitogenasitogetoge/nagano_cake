@@ -10,7 +10,7 @@
         <tr>
           <th>配送先</th>
           <td>
-            <%= @order.postal_code %><br>
+            〒<%= @order.postal_code %><br>
             <%= @order.address %><br>
             <%= @order.name %>
           </td>
@@ -22,8 +22,8 @@
     <div class="col">
       <h5>請求情報</h5>
       <table class="table table-hover table-inverse">
-        <tr><th>商品合計</th><td><%= @total.round.to_s(:delimited) %></td></tr>
-        <tr><th><strong>請求金額</strong></th><td><%= @order.request_amount.round.to_s(:delimited) %></td></tr>
+        <tr><th>商品合計</th><td><%= @total.round.to_s(:delimited) %>円</td></tr>
+        <tr><th>請求金額</th><td><%= @order.request_amount.round.to_s(:delimited) %>円</td></tr>
       </table>
     </div>
   </div>
@@ -42,9 +42,9 @@
       <tbody>
         <tr>
           <td><%= order_product.product.product_name %></td>
-          <td><%= order_product.product.tax_included_price.to_s(:delimited) %></td>
-          <td><%= order_product.quantity %></td>
-          <td><%= order_product.subtotal.to_s(:delimited)  %></td>
+          <td><%= order_product.product.tax_included_price.to_s(:delimited) %>円</td>
+          <td><%= order_product.quantity %>個</td>
+          <td><%= order_product.subtotal.to_s(:delimited)  %>円</td>
         </tr>
       </tbody>
       <% end %>
