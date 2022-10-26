@@ -13,7 +13,7 @@ class Admin::OrdersController < ApplicationController
     @order_product=@order.order_products
     @order.update(order_status_params)
       if @order.order_status == "入金確認"
-      @order_product.update_all(work_status: "制作待ち")
+      @order_product.update_all(work_status: "製作待ち")
       redirect_to request.referer
       else
       redirect_to request.referer

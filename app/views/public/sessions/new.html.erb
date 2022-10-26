@@ -2,10 +2,10 @@
   <div class="row">
     <div class="col centor-block">
       <br></br>
-      <h3 class="col-md-2 alert-secondary">ログイン</h3>
+      <h2 class="text-center bg-secondary text-white col-3">ログイン</h2>
         <br></br>
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <h4 class="col-md-4 alert-secondary">会員の方はこちらからログイン</h4>
+        <h4 class="text-center bg-secondary text-white col-4">会員の方はこちらからログイン</h4>
         <br>
         <table class="table table-borderless table-sm">
           <tr>
@@ -17,13 +17,13 @@
           <tr>
             <td></td>
             <td><%= f.label :メールアドレス %></td>
-            <td class="form-group"><%= f.email_field :email, autofocus: true, autocomplete: "email" , :size=>"50" , placeholder: "sample@example.com"  %></td>
+            <td class="form-group"><%= f.email_field :email, autofocus: true, autocomplete: "email" , :size=>"50" , placeholder: "sample@example.com" ,class:"form-control" %></td>
           </tr>
           <tr>
           <div class="form-group">
             <td></td>
             <td><%= f.label :パスワード %></td>
-            <td class="form-control"><%= f.password_field :password, autocomplete: "current-password" , :size=>"50" %></td>
+            <td class="form-control"><%= f.password_field :password, autocomplete: "current-password" , :size=>"50" ,class:"form-control" %></td>
           </div>
           </tr>
           <% if devise_mapping.rememberable? %>
@@ -42,7 +42,7 @@
             <td colspan="2"></td>
             <td>
               <div class="actions">
-              <%= f.submit "ログイン" , class: "btn btn-success btn-block" %>
+              <%= f.submit "ログイン" , class: "btn btn-primary btn-block" %>
               </div>
             <td></td>
         </table>
@@ -50,7 +50,7 @@
         <%#= render "public/shared/links" %>
         <br>
         <br>
-        <h4 class="col-md-4 alert-secondary">会員登録がお済みでない方</h4>
+        <h4 class="text-center bg-secondary text-white col-4">会員登録がお済みでない方</h4>
 
         <%=link_to "こちら" , new_customer_registration_path %>　から新規登録を行なってください。
     </div>
