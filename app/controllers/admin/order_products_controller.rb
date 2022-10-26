@@ -15,7 +15,7 @@ class Admin::OrderProductsController < ApplicationController
       # @order.update(order_status:"発送準備中")
     # end
 
-    if @order.order_products.count == @order.order_products.where(work_status: "制作完了").count
+    if @order.order_products.count == @order.order_products.where(work_status: "製作完了").count
       @order.update(order_status: "発送準備中")
     end
 

@@ -35,9 +35,14 @@ ja:
         postal_code: 郵便番号
         address: 住所
         phone_number: 電話番号
+      delivery:
+        name: 名前
+        postal_code: 郵便番号
+        address: 住所
     models:
       user: ユーザー
       customer: 会員情報
+      delivery: 配送先
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。

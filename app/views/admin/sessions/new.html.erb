@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col centor-block">
       <br></br>
-        <h3 class="col-md-3 alert-secondary">管理者ログイン</h3>
+        <h3 class="text-center bg-secondary text-white col-3">管理者ログイン</h3>
                 <br></br>
                 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                 <table class="table table-borderless table-sm">
@@ -15,20 +15,24 @@
                   <tr>
                     <td></td>
                     <td><%= f.label :メールアドレス %></td>
-                    <td class="form-group"><%= f.email_field :email, autofocus: true, autocomplete: "email" , :size=>"50" , placeholder: "sample@example.com"  %></td>
+                    <td class="form-group"><%= f.email_field :email, autofocus: true, autocomplete: "email" , :size=>"50" , placeholder: "sample@example.com" , class:"form-control"  %></td>
                   </tr>
                   <tr>
-                  <div class="form-group">
                     <td></td>
                     <td><%= f.label :パスワード %></td>
-                    <td class="form-control"><%= f.password_field :password, autocomplete: "current-password" , :size=>"50" %></td>
-                  </div>
+                    <td class="form-control"><%= f.password_field :password, autocomplete: "current-password" , :size=>"50", class:"form-control" %></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
                   </tr>
                   <tr>
                     <td colspan="2"></td>
                     <td>
                       <div class="actions">
-                      <%= f.submit "ログイン" , class: "btn btn-success btn-block" %>
+                      <%= f.submit "ログイン" , class: "btn btn-primary btn-block" %>
                       </div>
                     </td>
                     <td></td>
