@@ -20,12 +20,12 @@
     <div class="row row-cols-4 row-cols-md-1">
       <div class="card-deck" style="width:18rem">
         <div class="card">
-          <div class="image">
-        <!--画像-->
-          </div>
           <div class="card-body">
+            <%= link_to product_path(product) do %>
+              <%= image_tag product.get_image, size:'100x100', class:"card-img-top" %>
+            <% end %>
             <h5 class="card-title"><%= product.product_name %></h5>
-            <p class="card-text"><%= product.tax_excluded_price %>円（税抜き）</p>
+            <p class="card-text"><%= product.tax_excluded_price.to_s(:delimited) %>円（税抜き）</p>
           </div>
         </div>
       </div>
