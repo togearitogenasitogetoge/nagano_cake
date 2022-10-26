@@ -1,5 +1,5 @@
 <div class="container">
-  <h3 class="mt-2 p-2 text-center bg-secondary text-white col-md-4">ジャンル一覧（全<%= @genres.count %>件）</h3>
+  <h3 class="mt-2 p-2 text-center bg-secondary text-white col-md-4">ジャンル一覧（全<%= @products.count %>件）</h3>
   <div class="row">
     <div class="col-3">
     <%= render "public/genres/genre_lists", genres: @genres %>
@@ -10,8 +10,9 @@
       <div class="col mb-4">
         <div class="card">
           <div class="card-body">
-            <%= link_to product_path(product) do %><%= image_tag product.get_image, size:'100x100', class:"card-img-top" %><% end %>
+            <%= link_to product_path(product) do %><%= image_tag product.get_image, size:'100x100', class:"card-img-top" %>
             <div class="card-title"><%= product.product_name %>
+            <% end %>
             </div>
             <p class="card-text"><%= product.tax_included_price.to_s(:delimited) %>円</p>
           </div>
