@@ -6,6 +6,9 @@ class Public::CartProductsController < ApplicationController
     @cart_product = CartProduct.new(cart_product_params)
     @cart_product.customer_id = current_customer.id
     @cart_products = current_customer.cart_products.all
+    if @cart_product.quantity.blank?
+       redirect_to request.referer
+    else
       @cart_products.each do |cart_product|
         if cart_product.product_id == @cart_product.product_id
           new_quantity = cart_product.quantity + @cart_product.quantity
@@ -15,6 +18,7 @@ class Public::CartProductsController < ApplicationController
       end
       @cart_product.save
 		  redirect_to cart_products_path
+		end
   end
 
 

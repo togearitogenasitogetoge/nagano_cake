@@ -1,6 +1,6 @@
 
 <div class="container">
-  <h4 class="mt-2 p-2 text-center bg-secondary text-white col-md-4"><%= @customer.full_name %>さんの会員詳細</h4>
+  <h4 class="mt-2 p-2 text-center bg-secondary text-white col-sm-5"><%= @customer.full_name %>さんの会員詳細</h4>
 
 <table class="table table-borderless col-6">
       <tbody>
@@ -50,7 +50,7 @@
 		    <tr>
 		      <th></th>
 		      <td><%= link_to  "編集する", edit_admin_customer_path(@customer.id), class:"btn btn-sm btn-success" %></td>
-		      <td><%= link_to  "注文履歴一覧を見る", orders_path, class:"btn btn-sm btn-primary" %><td>
+		      <td><%= link_to  "注文履歴一覧を見る", admins_path, class:"btn btn-sm btn-primary" %><td>
       </tbody>
   </table>
 </div>

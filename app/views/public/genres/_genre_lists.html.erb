@@ -1,7 +1,26 @@
-<ul class="list-group">
-  <% genres.each do |genre| %>
-    <li class="list-group-item">
-      <%= link_to genre.genre_name, genre_path(genre.id) %>
-    </li>
-  <% end %>
+<!--<table class="table side-bar col-3 mr-3">-->
+  <!--<tbody>-->
+    <!--<tr>-->
+      <!--<th>ジャンル検索</th>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--< genres.each do |genre| %>-->
+      <!--<td><= link_to genre.genre_name, genre_path(genre.id) %></td>-->
+    <!--</tr>-->
+    <!--< end %>-->
+  <!--</tbody>-->
+<!--<table>-->
+
+
+
+
+<div class="mr-5">
+  <ul class="list-group">
+    <h5> ジャンル検索</h5>
+    <% genres.each do |genre| %>
+      <li class="list-group-item">
+        <%= link_to genre.genre_name, genre_path(genre.id) %>
+      </li>
+    <% end %>
+  </ul>
 </div>

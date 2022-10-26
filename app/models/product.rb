@@ -6,6 +6,7 @@ class Product < ApplicationRecord
   has_one_attached :product_image
 
   validates :product_name, presence: true
+  
 
 
   def tax_included_price
