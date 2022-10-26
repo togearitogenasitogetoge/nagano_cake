@@ -1,12 +1,14 @@
 <div class="container">
+  <div class="mt-2 p-2 text-center bg-secondary text-white col-3">
   <h2>商品詳細</h2>
+  </div>
+
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-5 mt-5">
         <%= image_tag @product.get_image, size:'100x300', class:"card-img-top" %>
       </div>
-      <div class="col-md-7">
-    　   <table>
-
+      <div class="col-md-7 mt-5">
+    　   <table class="text-center">
           <tr>
             <th>商品名</th>
             <td><%= @product.product_name %></td>
@@ -23,16 +25,16 @@
           </tr>
 
           <tr>
-            <th>税込価格（税抜価格）</th>
-            <td><%= @product.tax_included_price.to_s(:delimited) %>　(<%= @product.tax_excluded_price.to_s(:delimited) %>) 円</td>
+            <th>税込価格<br />（税抜価格）</th>
+            <td><%= @product.tax_included_price.to_s(:delimited) %> <br />　(<%= @product.tax_excluded_price.to_s(:delimited) %>) 円</td>
           </tr>
 
           <tr>
             <th>販売ステータス</th>
             <td><% if @product.sales_status == true %>
- 　   　     　　 <p class="text-success ">販売中</p>
+ 　   　     　  　 <p class="text-success ">販売中</p>
   　　　　  　 　　　　<% else %>
-  　　　　　 　　　　　　<p class="text-secondary ">販売停止中</p>
+  　　　　　 　  　　　　　<p class="text-secondary ">販売停止中</p>
                <% end %>
 　　　　　  </td>
           </tr>

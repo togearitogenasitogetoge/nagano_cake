@@ -4,9 +4,9 @@
       <h2>商品編集</h2>
     </div>
   </div>
-
-  <div class="row">
-    <div class="col-md-10 mt-3">
+  <div class="row"></div>
+    <%= render "public/shared/error_messages", resource: @product %>
+    <div class="col-md-12 mt-5 mx-15">
       <%= form_with model: @product, url: admin_product_path, method: :patch do |f| %>
       <table>
         <tr>
@@ -44,7 +44,7 @@
         </tr>
 
         <tr>
-          <div class="comnit">
+          <div class="mt-2">
             <th><%= f.submit "変更を保存", class: "btn btn-success" %></th>
           </div>
         </tr>
