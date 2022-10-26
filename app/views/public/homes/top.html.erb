@@ -15,7 +15,6 @@
 <h2>新着商品</h2></br>
   <div class="row">
       <%= render "public/genres/genre_lists", genres: @genres %>
-
     <% @products.first(4).each do |product| %>
     <div class="row row-cols-4 row-cols-md-1">
       <div class="card-deck" style="width:18rem">
