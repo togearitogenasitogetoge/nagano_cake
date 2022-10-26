@@ -16,7 +16,7 @@
 
 <div class="mr-5">
   <ul class="list-group">
-    <h5> ジャンル検索</h5>
+    <h5 class="bg-secondary text-light text-center p-2"> ジャンル検索</h5>
     <% genres.each do |genre| %>
       <li class="list-group-item">
         <%= link_to genre.genre_name, genre_path(genre.id) %>
