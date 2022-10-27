@@ -36,13 +36,10 @@ before_action :authenticate_customer!
     redirect_to deliveries_path
   end
 
-  # 配送先用のストロングパラメータ　userと紐づけ後エラー解消となるはず
-  # 現在はAuthentic　Tokenのエラーが出てしまっている
   private
 
   def delivery_params
     params.require(:delivery).permit(:customer_id, :postal_code, :address, :name)
-    # customerid必要？
   end
 
 end

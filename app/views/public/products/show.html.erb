@@ -1,14 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col-3 mt-2">
-     <%= render "public/genres/genre_lists", genres: @genres %>
+      <%= render "public/genres/genre_lists", genres: @genres %>
     </div>
-
     <div class="col-md-3 offset-md-1 mt-5">
-       <%= image_tag @product.get_image, size:'200x200', class:"card-img-top" %>
+      <%= image_tag @product.get_image, size:'200x200', class:"card-img-top" %>
     </div>
-
-
     <div class="col-md-4 offset-md-1 mt-5">
       <h3 class="mt-3"><%= @product.product_name %></h3>
       <p class="mt-3"><%= @product.product_description %></p>
@@ -22,6 +19,6 @@
       <% else %>
         <h4 class="text-danger">sold out</h4>
       <% end %>
+    </div>
   </div>
-  </div>
-</div>-->
+</div>
