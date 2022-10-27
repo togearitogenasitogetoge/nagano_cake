@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3 mt-2">
+      <%= render "public/genres/genre_lists", genres: @genres %>
+    </div>
+    <div class="col">
+      <h3 class="mt-2 p-2 text-center bg-secondary text-white col-md-6">商品一覧（全<%= @products.count %>件）</h3>
+      <div class="row row-cols-1 row-cols-md-4 g-3">
+        <% @products.each do |product| %>
+          <div class="card-deck mr-2 mb-2">
+            <div class="card  w-100 border-0" style="width: 20rem">
+              <div class="card-body">
+                <%= link_to product_path(product), class:"text-dark" do %><%= image_tag product.get_image, size:'100x100', class:"card-img-top" %>
+                  <div class="card-title"><%= product.product_name %></div>
+                <% end %>
+                <p class="card-text"><%= product.tax_included_price.to_s(:delimited) %>円</p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <%= paginate @products %>
+</div>

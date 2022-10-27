@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3 mt-2">
+      <%= render "public/genres/genre_lists", genres: @genres %>
+    </div>
+    <div class="col-md-3 offset-md-1 mt-5">
+      <%= image_tag @product.get_image, size:'200x200', class:"card-img-top" %>
+    </div>
+    <div class="col-md-4 offset-md-1 mt-5">
+      <h3 class="mt-3"><%= @product.product_name %></h3>
+      <p class="mt-3"><%= @product.product_description %></p>
+      <p class="mt-5"><strong>¥<%= @product.tax_included_price.to_s(:delimited) %>(税込み）</strong></p>
+      <% if @product.sales_status == true %>
+        <%= form_with model: @cart_product, url: cart_products_path do |f| %>
+          <%= f.hidden_field :product_id, value: @product.id %>
+          <p class="d-inline"><%= f.select :quantity, [['1個', 1], ['2個', 2], ['3個', 3], ['4個', 4], ['5個', 5], ['6個', 6], ['7個', 7], ['8個', 8], ['9個', 9]], {:prompt => "個数選択"} %></p>
+          <p class="d-inline ml-5"><%= f.submit "カートに入れる", class: "btn btn-success" %></buttun>
+        <% end %>
+      <% else %>
+        <h4 class="text-danger">sold out</h4>
+      <% end %>
+    </div>
+  </div>
+</div>

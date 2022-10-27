@@ -1,0 +1,42 @@
+<div class="jumbotron" style="background: url(<%= asset_path "背景①.jpg" %>)center; background-size:cover;">
+  <div class="row p-5">
+    <div class="col-md-12">
+      <div class="container col-5 p-4 text-center" style="background-color:rgba(255,255,255,0.9);">
+        <h3 style="color:#000000;"><strong>ようこそ、ながのCAKEへ！</strong></h3><br />
+        <p>
+          このサイトは、ケーキ販売のECサイトになります。<br />
+          会員でない方も商品の閲覧はできますが、<br />
+          購入には会員登録が必要になります。
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <%= render "public/genres/genre_lists", genres: @genres %>
+    </div>
+    <div class="col">
+      <h2>新着商品</h2>
+      <div class="row row-cols-1 row-cols-md-4 g-3">
+        <% @products.first(4).each do |product| %>
+        <div class="card-deck mr-2">
+          <div class="card w-100 border-0" style="width: 20rem">
+            <div class="card-body">
+              <%= link_to product_path(product), class:"text-dark" do %>
+                <%= image_tag product.get_image, size:'100x100', class:"card-img-top" %>
+                <div class="card-title"><%= product.product_name %></div>
+              <% end %>
+              <p class="card-text"><%= product.tax_excluded_price.to_s(:delimited) %>円（税抜き）</p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="text-right">
+    <button type="button" class="btn btn-link"><%= link_to "全ての商品をみる", products_path %></button>
+  </div>
+</div>

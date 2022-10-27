@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <h4 class="mt-2 p-2 text-center bg-secondary text-white col-md-3">商品新規登録</h4>
+  </div>
+  <div class="row">
+    <div class="col-md-8 offset-md-2 mt-4">
+      <%= render "public/shared/error_messages", resource: @product %>
+      <%= form_with model: @product, url: admin_products_path, method: :post do |f| %>
+        <table class="table table-borderless h6">
+          <tr>
+            <td>商品画像</td>
+            <td><%= f.file_field :product_image, accept: "image/*" %></td>
+          </tr>
+          <tr>
+            <td>商品名</td>
+            <td><%= f.text_field :product_name, placeholder:"商品名" , class: "form-control" %></td>
+          </tr>
+          <tr>
+            <td>商品説明</td>
+            <td><%= f.text_area :product_description, size: "50x10", placeholder:"ここに説明文を記述します" , class: "form-control" %></td>
+          </tr>
+          <tr>
+            <td>ジャンル</td>
+            <td><%= f.collection_select :genre_id, Genre.all, :id, :genre_name, :prompt => "--選択してください--" , class: "form-control" %></td>
+          </tr>
+          <tr>
+            <td>税抜価格</td>
+            <td><%= f.text_field :tax_excluded_price, placeholder:"1000", class: "form-control" %></td>
+            <td width="70" class="h4">円</td>
+          </tr>
+          <tr>
+            <td>販売ステータス</td>
+            <td>
+              <%= f.radio_button :sales_status, true, checked: true %><%= f.label :sales_status, "販売中" %>&emsp;&emsp;&emsp;&emsp;
+              <%= f.radio_button :sales_status, false %><%= f.label :sales_status, "販売停止中" %>
+            </td>
+          </tr>
+        </table>
+          <div class="col-md-12 text-center">
+            <%= f.submit '新規登録', class: "btn btn-success" %>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>
