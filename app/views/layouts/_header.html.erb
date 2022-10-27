@@ -1,87 +1,94 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-      <a class="navbar-brand " href="/"><%= image_tag '①ロゴ（英字・ケーキのイラスト）.png', size: '180x50'%></a>
+      <a class="navbar-brand " href="/"><%= image_tag '①ロゴ（英字・ケーキのイラスト）.png', size: '300x75'%></a>
       <% if customer_signed_in? %>
-        <p class="text-light m-2">ようこそ、<%= current_customer.full_name%> さん!</p>
+        <p class="text-dark m-2">ようこそ、<%= current_customer.full_name%> さん!</p>
       <% end %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
-
         <% if customer_signed_in? %>
           <div class="ml-3">
-            <%= link_to customers_my_page_path(current_customer), class: 'btn btn-outline-secondary btn-block text-light' do %>
-              <span>マイページ</span>
+            <%= link_to customers_my_page_path(current_customer), class: 'btn btn btn-light btn-block text-dark' do %>
+              <i class="fas fa-user"></i>&nbsp;マイページ
             <% end %>
           </div>
-          <div class="ml-3">
-            <%= link_to products_path, class: 'btn btn-outline-secondary btn-block text-light' do %>
-              <span>商品一覧</span>
+          <div class="ml-1">
+            <%= link_to products_path, class: 'btn btn btn-light btn-block text-dark' do %>
+              <i class="fas fa-birthday-cake"></i>&nbsp;商品一覧
             <% end %>
           </div>
-          <div class="ml-3">
-            <%= link_to cart_products_path, class: 'btn btn-outline-secondary btn-block text-light' do %>
-              <span>カート</span>
+          <div class="ml-1">
+            <%= link_to cart_products_path, class: 'btn btn btn-light btn-block text-dark' do %>
+              <i class="fas fa-shopping-cart"></i>&nbsp;カート
             <% end %>
           </div>
-          <div class="ml-3">
-            <%= link_to destroy_customer_session_path, method: :delete,class: 'btn btn-outline-secondary btn-block text-light' do %>
-              <span>ログアウト</span>
+          <div class="ml-1">
+            <%= link_to destroy_customer_session_path, method: :delete,class: 'btn btn btn-light btn-block text-dark' do %>
+              <i class="fas fa-sign-out-alt"></i>&nbsp;ログアウト
             <% end %>
           </div>
         <% elsif admin_signed_in? %>
           <div class="ml-3">
-            <%= link_to admin_products_path, class: 'btn btn-outline-secondary btn-block text-light' do %>
-              <span>商品一覧</span>
+            <%= link_to admin_products_path, class: 'btn btn btn-light btn-block text-dark' do %>
+              <i class="fas fa-birthday-cake"></i>&nbsp;商品一覧
             <% end %>
           </div>
-          <div class="ml-3">
-            <%= link_to admin_customers_path, class: 'btn btn-outline-secondary btn-block text-light' do %>
-              <span>会員一覧</span>
+          <div class="ml-1">
+            <%= link_to admin_customers_path, class: 'btn btn btn-light btn-block text-dark' do %>
+              <i class="fas fa-users"></i>&nbsp;会員一覧
             <% end %>
           </div>
-          <div class="ml-3">
-            <%= link_to admins_path, class: 'btn btn-outline-secondary btn-block text-light' do %>
-              <span>注文履歴一覧</span>
+          <div class="ml-1">
+            <%= link_to admins_path, class: 'btn btn btn-light btn-block text-dark' do %>
+              <i class="fas fa-list-ul"></i>&nbsp;注文履歴一覧
             <% end %>
           </div>
-          <div class="ml-3">
-            <%= link_to admin_genres_path, class: 'btn btn-outline-secondary btn-block text-light' do %>
-              <span>ジャンル一覧</span>
+          <div class="ml-1">
+            <%= link_to admin_genres_path, class: 'btn btn btn-light btn-block text-dark' do %>
+             <i class="fas fa-tags"></i>&nbsp;ジャンル一覧
             <% end %>
           </div>
-          <div class="ml-3">
-            <%= link_to destroy_admin_session_path, method: :delete, class: 'btn btn-outline-secondary btn-block text-light' do %>
-              <span>ログアウト</span>
+          <div class="ml-1">
+            <%= link_to destroy_admin_session_path, method: :delete, class: 'btn btn btn-light btn-block text-dark' do %>
+              <i class="fas fa-sign-out-alt"></i>&nbsp;ログアウト
             <% end %>
           </div>
         <% else %>
           <div class="ml-3">
-            <%= link_to about_path, class: 'btn btn-outline-secondary btn-block text-light' do %>
-              <span>about</span>
+            <%= link_to about_path, class: 'btn btn btn-light btn-block text-dark' do %>
+              <i class="fas fa-store"></i>&nbsp;about
             <% end %>
           </div>
-          <div class="ml-3">
-            <%= link_to products_path, class: 'btn btn-outline-secondary btn-block text-light' do %>
-              <span>商品一覧</span>
+          <div class="ml-1">
+            <%= link_to products_path, class: 'btn btn btn-light btn-block text-dark' do %>
+              <i class="fas fa-birthday-cake"></i>&nbsp;商品一覧
             <% end %>
           </div>
-          <div class="ml-3">
-            <%= link_to new_customer_registration_path, method: :get, class: 'btn btn-outline-secondary btn-block text-light' do %>
-              <span>新規登録</span>
+          <div class="ml-1">
+            <%= link_to new_customer_registration_path, method: :get, class: 'btn btn btn-light btn-block text-dark' do %>
+              <i class="fas fa-user-plus"></i>&nbsp;新規登録
             <% end %>
           </div>
-          <div class="ml-3">
-            <%= link_to new_customer_session_path, method: :get, class: 'btn btn-outline-secondary btn-block text-light' do %>
-              <span>ログイン</span>
+          <div class="ml-1">
+            <%= link_to new_customer_session_path, method: :get, class: 'btn btn btn-light btn-block text-dark' do %>
+              <i class="fas fa-sign-in-alt"></i>&nbsp;ログイン
             <% end %>
           </div>
         <% end %>
         </ul>
       </div>
     </div>
+     <nav class="navbar navbar-light bg-light">
+       <div class="container">
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="商品検索(仮)" aria-label="Search">
+          <button class="btn btn-secondary" type="submit">Search</button>
+        </form>
+       </div>
+    </nav>
   </nav>
 </header>
