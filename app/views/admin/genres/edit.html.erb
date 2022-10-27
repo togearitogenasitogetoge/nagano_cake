@@ -6,7 +6,7 @@
   </div>
 
   <div class="row mt-5">
-     <%= render "public/shared/error_messages", resource: @genre %>
+    <%= render "public/shared/error_messages", resource: @genre %>
   </div>
     <div class="edit-genre-form">
       <%= form_with model: @genre, url: admin_genre_path(@genre.id), method: :patch do |f| %>
