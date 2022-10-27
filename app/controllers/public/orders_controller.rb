@@ -27,7 +27,7 @@ class Public::OrdersController < ApplicationController
         render :new
       end
     elsif params[:order][:select_address] == "2"
-      @order.postal_code
+      @order.postal_code = @order.postal_code
       @order.address
       @order.name
     end
@@ -51,6 +51,7 @@ class Public::OrdersController < ApplicationController
     else
       @order = Order.new(order_params)
       @customer = current_customer
+      flash.now[:alert] = "住所を確認してください"
       render :new
     end
 

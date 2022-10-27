@@ -8,7 +8,7 @@ class Order < ApplicationRecord
   validates :shipping_fee, presence:true
   validates :request_amount, presence:true
   validates :name, presence:true
-  validates :postal_code, presence:true
+  validates :postal_code, presence:true, numericality: {only_integer: true}, length: { is: 7 }
   validates :address, presence:true
 
 
