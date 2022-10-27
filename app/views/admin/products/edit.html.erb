@@ -14,11 +14,11 @@
         </tr>
         <tr>
           <td>商品名</td>
-          <td><%= f.text_field :product_name %></td>
+          <td><%= f.text_field :product_name , class: "form-control"%></td>
         </tr>
         <tr>
           <td>商品説明</td>
-          <td><%= f.text_area :product_description, size: "50x10" %></td>
+          <td><%= f.text_area :product_description, size: "50x10" ,class: "form-control" %></td>
         </tr>
         <tr>
           <td>ジャンル</td>
@@ -26,7 +26,8 @@
         </tr>
         <tr>
           <td>税抜価格</td>
-          <td><%= f.text_field :tax_excluded_price %>円</td>
+          <td><%= f.text_field :tax_excluded_price ,  class: "form-control" %></td>
+          <td width="70" class="h4">円</td>
         </tr>
         <tr>
           <td>販売ステータス</td>
