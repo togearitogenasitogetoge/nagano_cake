@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: "homes#top"
-    get 'home/about' => "homes#about", as: "about"
+    get '/about' => "homes#about", as: "about"
     post 'orders/confirm' => 'orders#confirm'
     get 'orders/complete' => 'orders#complete'
     resources :orders, only:[:new, :create, :index, :show]
