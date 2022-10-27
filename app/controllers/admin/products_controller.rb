@@ -1,4 +1,5 @@
 class Admin::ProductsController < ApplicationController
+  # before_action :authenticate_admin!
 
   def new
     @product = Product.new
@@ -16,8 +17,6 @@ class Admin::ProductsController < ApplicationController
        render "new"
      end
   end
-
-
 
   def show
     @product = Product.find(params[:id])
@@ -40,5 +39,4 @@ class Admin::ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:genre_id, :product_name, :product_description, :tax_excluded_price, :sales_status, :product_image)
   end
-
 end
