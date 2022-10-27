@@ -7,7 +7,7 @@
 # アプリケーショントップページ
 https://c04c432968ff4ff1b02d2e4f6a24329f.vfs.cloud9.ap-northeast-1.amazonaws.com/
 
-![デモ画像.jpg](images/デモ画像.png)
+![デモ画像.jpg](app/assets/images/デモ画像.jpg)
 
 # 開発環境
 
