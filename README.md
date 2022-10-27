@@ -1,24 +1,25 @@
 # ながのCAKE
 
-"長野県にある小さな洋菓子店「ながのCAKE」の商品を通販するためのECサイトです。  
+"長野県にある小さな洋菓子店「ながのCAKE」の商品を通販するためのECサイトです。
 元々は近隣の住民が主な顧客でしたが、昨年から始めたInstagramが人気になったことで全国から注文が来るようになりました。InstagramのDMやメールで通販の注文を受けていましたが、情報管理が煩雑になってきたため、管理機能を含んだ通販サイトを開設したいとのご依頼を受けて開発しました。"
 
 
-# DEMO
-魅力が直感的に伝えわるデモ動画や図解を載せる
+# アプリケーショントップページ
+https://c04c432968ff4ff1b02d2e4f6a24329f.vfs.cloud9.ap-northeast-1.amazonaws.com/
 
+![デモ画像.jpg](images/デモ画像.png)
 
 # 開発環境
 
-使用言語  
+使用言語
 * HTML&CSS
 * Ruby
 * JavaScript
 
-フレームワーク  
+フレームワーク
 * Ruby on Rails (6.1.7)
 
-Gem  
+Gem
 * bootstrap
 * devise
 * jquery-rails
@@ -26,14 +27,14 @@ Gem
 * pry-byebug
 
 ## インストール
-$ git clone git@github.com:togearitogenasitogetoge/nagano_cake.git  
-$ cd nagano-cake  
-$ rails db:migrate  
-$ rails db:seed  
+$ git clone git@github.com:togearitogenasitogetoge/nagano_cake.git
+$ cd nagano-cake
+$ rails db:migrate
+$ rails db:seed
 $ bundle instal
 
 
-# Usage
+# 機能
 * 顧客側
 
 1 ログイン機能
@@ -79,8 +80,8 @@ $ bundle instal
 * 過去の注文概要を一覧で確認することができる。
 
 13 注文履歴詳細表示機能
-* 注文の詳細（注文商品や個数など）を確認することができる。  
-　　
+* 注文の詳細（注文商品や個数など）を確認することができる。
+
 
 * 管理者側
 
