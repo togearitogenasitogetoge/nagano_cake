@@ -13,7 +13,7 @@
               <%= link_to product_path(product), class:"text-dark" do %><%= image_tag product.get_image, size:'100x100', class:"card-img-top" %>
                 <div class="card-title"><%= product.product_name %></div>
               <% end %>
-            <p class="card-text"><%= product.tax_included_price.to_s(:delimited) %>円</p>
+              <p class="card-text"><%= product.tax_included_price.to_s(:delimited) %>円</p>
             </div>
           </div>
         </div>

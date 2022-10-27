@@ -30,11 +30,18 @@
         </tr>
         <tr>
           <td>販売ステータス</td>
-          <td><%= f.radio_button :sales_status, true, checked: true %><%= f.label :sales_status, "販売中" %>
-　　　　　    <%= f.radio_button :sales_status, false %><%= f.label :sales_status, "販売停止中" %>
+          <td>
+            <%= f.radio_button :sales_status, true, checked: true %><%= f.label :sales_status, "販売中" %>
+　　　　　  <%= f.radio_button :sales_status, false %><%= f.label :sales_status, "販売停止中" %>
 　　　　  </td>
         </tr>
       </table>
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <%= f.submit '変更を保存する', class: "btn btn-success" %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
