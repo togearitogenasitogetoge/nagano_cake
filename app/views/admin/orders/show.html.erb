@@ -34,7 +34,6 @@
   </div>
   <div class="row">
     <div class="col-md-8">
-      <% @order_product.each do |order_product| %>
       <table class="table table-borderless">
         <thead class="table-active">
           <tr>
@@ -43,8 +42,10 @@
             <td class="font-weight-bold">数量</td>
             <td class="font-weight-bold">小計</td>
             <td width="140" class="font-weight-bold">製作ステータス</td>
+            <td></td>
           </tr>
         </thead>
+        <% @order_product.each do |order_product| %>
         <tbody>
           <tr>
             <td><%= order_product.product.product_name %></td>
@@ -64,8 +65,8 @@
         <% end %>
       </table>
     </div>
-    <div class="col-md-4 h5">
-      <table>
+    <div class="col-md-4 d-flex align-items-end mb-3">
+      <table class="text-right h5 pull-bottom">
         <tr>
           <td class="font-weight-bold">商品合計</td>
           <td></td>
