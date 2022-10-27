@@ -1,0 +1,10 @@
+<div class="mr-5">
+  <ul class="list-group text-center">
+    <h5 class="text-dark text-center p-2 border-top border-bottom">ジャンル検索</h5>
+    <% genres.each do |genre| %>
+      <li class="list-group-item">
+        <%= link_to genre.genre_name, genre_path(genre.id), class:"text-dark" %>
+      </li>
+    <% end %>
+  </ul>
+</div>
