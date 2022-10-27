@@ -2,10 +2,10 @@
   <div class="row">
     <div class="col centor-block">
       <br></br>
-      <h2 class="text-center bg-secondary text-white col-3">ログイン</h2>
+      <h4 class="mt-2 p-2 text-center bg-secondary text-white col-md-3">ログイン</h4>
         <br></br>
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <h4 class="text-center bg-secondary text-white col-4">会員の方はこちらからログイン</h4>
+        <h4 class="text-center bg-secondary text-white col-4 p-2">会員の方はこちらからログイン</h4>
         <br>
         <table class="table table-borderless table-sm">
           <tr>
@@ -50,7 +50,7 @@
         <%#= render "public/shared/links" %>
         <br>
         <br>
-        <h4 class="text-center bg-secondary text-white col-4">会員登録がお済みでない方</h4>
+        <h4 class="text-center bg-secondary text-white col-4 p-2">会員登録がお済みでない方</h4>
 
         <%=link_to "こちら" , new_customer_registration_path %>　から新規登録を行なってください。
         <br></br>
