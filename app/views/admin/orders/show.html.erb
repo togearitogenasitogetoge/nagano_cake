@@ -30,7 +30,7 @@
                         <tr>
                             <td class="font-weight-bold">注文ステータス</td>
                             <td>
-                                <%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
+                                <%= form_with model: @order, url: admin_order_path , method: :patch, local: true do |f| %>
                                 <%= f.select :order_status, Order.order_statuses_i18n.invert, class: "order_status" %>
                                 &emsp;
                                 <%= f.submit "更新" , class: "btn btn-outline-success" %>

@@ -6,7 +6,7 @@
         <%= form_with model: @genre, url:'/admin/genres' do |f| %>
         <%= render "public/shared/error_messages", resource: @genre %>
         <h4 class="d-inline-block mt-4 mx-4">ジャンル名</h4>
-         <p class="d-inline-block mx-4"><%= f.text_field :genre_name, placeholder:"ジャンル名" %></p>
+         <p class="d-inline-block mx-4"><%= f.text_field :genre_name, placeholder:"ジャンル名" , class: "form-control" %></p>
          <p class="d-inline-block mx-4"><%= f.submit '新規登録', class: "btn btn-success" %></p>
       </div>
     <% end %>

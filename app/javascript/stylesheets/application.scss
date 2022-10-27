@@ -3,3 +3,28 @@
 .pagination {
   justify-content: center;
 }
+
+.font {
+  font-family: 'Zen Kurenaido', sans-serif;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+header {
+  background-color: #F6F6F6;
+}
+
+footer {
+  position: sticky;
+  top: 100vh;
+  width: 100%;
+  background-color: #F6F6F6;
+}
