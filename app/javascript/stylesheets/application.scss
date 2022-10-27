@@ -18,6 +18,10 @@ body {
   height: 100%;
 }
 
+header {
+  background-color: #F6F6F6;
+}
+
 footer {
   position: sticky;
   top: 100vh;
@@ -26,16 +30,16 @@ footer {
 }
 
 .pagination>li>a {
-  // border: none;     
-  color: #696969;   
+  // border: none;
+  color: #696969;
 }
 
 .pagination>.active>a {
-  background: #93c9ff;     
-  // border-radius: 15px;     
+  background: #93c9ff;
+  // border-radius: 15px;
 }
 
 
 .pagination>li>a:hover {
-  // border-radius: 15px;    
+  // border-radius: 15px;
 }
