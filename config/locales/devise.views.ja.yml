@@ -39,10 +39,36 @@ ja:
         name: 名前
         postal_code: 郵便番号
         address: 住所
+      order:
+        payment_method: 支払い方法
+        order_status: 注文ステータス
+        shipping_fee: 送料
+        request_amount: 請求額
+        name: 宛先
+        address: 住所
+        postal_code: 郵便番号
+      cart_product:
+        quantity: 数量
+      product:
+        product_name: 商品名
+        product_description: 商品説明文
+        tax_excluded_price: 税抜価格
+        sales_status: 販売ステータス
+      order_product:
+        quantity: 個数
+        tax_included_price: 税込価格
+        work_status: 製作ステータス
+      genre:
+        genre_name: ジャンル名
     models:
       user: ユーザー
       customer: 会員情報
       delivery: 配送先
+      order: 注文
+      cart_product: カート内商品
+      product: 商品
+      order_product: 注文商品
+      genre: ジャンル
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。
