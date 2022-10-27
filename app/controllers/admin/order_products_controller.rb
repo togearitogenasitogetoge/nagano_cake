@@ -5,8 +5,8 @@ class Admin::OrderProductsController < ApplicationController
     @order = @order_product.order
 
     @order_product.update(order_product_params)
-    if @order_product.work_status == "製作中"
-      @order.update(order_status:"製作中")
+    if @order_product.work_status == "in_production"
+      @order.update(order_status:"in_production")
     end
 
 
@@ -15,8 +15,8 @@ class Admin::OrderProductsController < ApplicationController
       # @order.update(order_status:"発送準備中")
     # end
 
-    if @order.order_products.count == @order.order_products.where(work_status: "製作完了").count
-      @order.update(order_status: "発送準備中")
+    if @order.order_products.count == @order.order_products.where(work_status: "production_complete").count
+      @order.update(order_status: "preparing_delivery")
     end
 
 

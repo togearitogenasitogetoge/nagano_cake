@@ -19,7 +19,7 @@
           <tr>
             <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
             <td>
-              〒<%= order.postal_code %><br>
+              <%= order.postal_code %><br>
               <%= order.address %><br>
               <%= order.name %>
             </td>
@@ -43,4 +43,5 @@
       </table>
     </div>
   </div>
+  <%= paginate @orders %>
 </div>

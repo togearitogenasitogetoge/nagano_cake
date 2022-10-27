@@ -8,11 +8,11 @@
         <div class="row row-cols-1 row-cols-md-4 g-3">
           <% @products.each do |product| %>
           <div class="card-deck mr-2 mb-2">
-          <div class="card">
+          <div class="card  w-100 border-0" style="width: 20rem">
             <div class="card-body">
              <%= link_to product_path(product), class:"text-dark" do %><%= image_tag product.get_image, size:'100x100', class:"card-img-top" %>
               <div class="card-title"><%= product.product_name %>
-             <% end %>
+              <% end %>
               </div>
               <p class="card-text"><%= product.tax_included_price.to_s(:delimited) %>円</p>
             </div>

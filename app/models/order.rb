@@ -8,11 +8,11 @@ class Order < ApplicationRecord
   validates :shipping_fee, presence:true
   validates :request_amount, presence:true
   validates :name, presence:true
-  validates :postal_code, presence:true
+  validates :postal_code, presence:true, numericality: {only_integer: true}, length: { is: 7 }
   validates :address, presence:true
 
 
   enum payment_method: {credit_card:0,transfer:1}
-  enum order_status:{"入金待ち":0, "入金確認": 1, "製作中":2, "発送準備中":3, "発送済み":4}
+  enum order_status:{payment_waiting:0, payment_confirmation: 1, in_production:2, preparing_delivery:3, delivered:4}
 
 end
