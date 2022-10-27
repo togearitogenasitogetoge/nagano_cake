@@ -1,12 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col centor-block">
-      <br></br>
-      <h4 class="mt-2 p-2 text-center bg-secondary text-white col-md-3">ログイン</h4>
-        <br></br>
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <h4 class="text-center bg-secondary text-white col-4 p-2">会員の方はこちらからログイン</h4>
-        <br>
+      <h4 class="mb-5 p-2 text-center bg-secondary text-white col-md-3">ログイン</h4>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <h4 class="mb-5 text-center bg-secondary text-white col-4 p-2">会員の方はこちらからログイン</h4>
         <table class="table table-borderless table-sm">
           <tr>
             <td class="col-md-2 col-md-offset-5"></td>
@@ -20,39 +17,36 @@
             <td class="form-group"><%= f.email_field :email, autofocus: true, autocomplete: "email" , :size=>"50" , placeholder: "sample@example.com" ,class:"form-control" %></td>
           </tr>
           <tr>
-          <div class="form-group">
-            <td></td>
-            <td><%= f.label :パスワード %></td>
-            <td class="form-control"><%= f.password_field :password, autocomplete: "current-password" , :size=>"50" ,class:"form-control" %></td>
-          </div>
+            <div class="form-group">
+              <td></td>
+              <td><%= f.label :パスワード %></td>
+              <td class="form-control"><%= f.password_field :password, autocomplete: "current-password" , :size=>"50" ,class:"form-control" %></td>
+            </div>
           </tr>
-          <% if devise_mapping.rememberable? %>
+        <% if devise_mapping.rememberable? %>
           <tr>
             <td></td>
             <td></td>
             <td>
               <div class="field">
-              <%= f.check_box :remember_me %>
-              <%= f.label :次回から自動的にログイン %>
+                <%= f.check_box :remember_me %>
+                <%= f.label :次回から自動的にログイン %>
               </div>
             </td>
           </tr>
-          <% end %>
+        <% end %>
           <tr>
             <td colspan="2"></td>
             <td>
               <div class="actions">
-              <%= f.submit "ログイン" , class: "btn btn-primary btn-block" %>
+                <%= f.submit "ログイン" , class: "btn btn-primary btn-block" %>
               </div>
-            <td></td>
+            </td>
         </table>
-        <% end %>
-        <%#= render "public/shared/links" %>
-        <br>
-        <br>
-        <h4 class="text-center bg-secondary text-white col-4 p-2">会員登録がお済みでない方</h4>
-
-        <%=link_to "こちら" , new_customer_registration_path %>　から新規登録を行なってください。
+      <% end %>
+      <%#= render "public/shared/links" %>
+      <h4 class="mt-5 text-center bg-secondary text-white col-4 p-2">会員登録がお済みでない方</h4>
+      <%=link_to "こちら" , new_customer_registration_path %>　から新規登録を行なってください。
     </div>
   </div>
 </div>
