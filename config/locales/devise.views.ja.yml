@@ -52,8 +52,11 @@ ja:
       product:
         product_name: 商品名
         product_description: 商品説明文
+        product_image: 商品画像
         tax_excluded_price: 税抜価格
         sales_status: 販売ステータス
+        genre: ジャンル名
+        genre_id: ジャンル名
       order_product:
         quantity: 個数
         tax_included_price: 税込価格
