@@ -6,7 +6,7 @@ class Admin::OrderProductsController < ApplicationController
 
     @order_product.update(order_product_params)
     if @order_product.work_status == "in_production"
-      @order.update(order_status:"in_production")
+      @order.update(order_status: "in_production")
     end
 
 
